@@ -37,7 +37,7 @@ export default function PortfolioPreview() {
   const projectData = [
     {
       title: "Diabetes Prediction Model Using Machine Learning in Python",
-      description: "This healthcare analytics project involved developing a supervised machine learning model to predict diabetes risk using logistic regression and exploratory data analysis (EDA). Using Python, Pandas, NumPy, and statistical modeling techniques, I engineered features and optimized predictive accuracy by 18%. The model identified glucose levels, BMI, and age as primary risk indicators, enabling improved early-detection strategies.",
+      description: "This healthcare analytics project involved developing a supervised machine learning model to predict diabetes risk using logistic regression and exploratory data analysis (EDA). Using Python, Pandas, NumPy and statistical modeling techniques, I engineered features and optimized predictive accuracy by 18%. The model identified glucose levels, BMI and age as primary risk indicators, enabling improved early-detection strategies.",
       method: "Python • Pandas • NumPy • Matplotlib • Data Cleaning • EDA • Logistic Regression • Visualization",
       impact: "Improved outcome prediction accuracy by 18%",
       role: "Lead Data Analyst",
@@ -49,7 +49,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Retail Sales Data Analysis & Business Intelligence Dashboard (Adidas 2020–2021)",
-      description: "Conducted a full-scale sales analytics and business intelligence project analyzing 9,649 retail transactions across five U.S. regions. Using SQL, Excel, and Tableau dashboards, I evaluated revenue growth, product performance, operating margins, and post-pandemic sales trends. The analysis identified high-growth regions and optimized product-level revenue strategy, supporting data-driven retail decision-making.",
+      description: "Conducted a full-scale sales analytics and business intelligence project analyzing 9,649 retail transactions across five U.S. regions. Using SQL, Excel and Tableau dashboards, I evaluated revenue growth, product performance, operating margins and post-pandemic sales trends. The analysis identified high-growth regions and optimized product-level revenue strategy, supporting data-driven retail decision-making.",
       method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Regional & Product Analysis • KPI Tracking",
       impact: "Identified top-performing regions driving revenue stability",
       role: "Business Intelligence Analyst",
@@ -61,7 +61,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Sales Analysis — Data-Driven Marketing Intelligence (Intern Project)",
-      description: "Performed end-to-end sales analytics on 185,950 transactions for 2019, leveraging SQL, Excel, and Tableau to clean, aggregate, and visualize data by product, city, month, and hour. Key insights included peak sales in December, top revenue from MacBook Pro and iPhone, high-performing cities like San Francisco, and temporal trends for targeted marketing and inventory optimization.",
+      description: "I performed end-to-end sales analytics on 185,950 transactions for the year 2019, leveraging SQL, Excel and Tableau to clean, aggregate and visualize data by product, city, month and hour. Key insights included peak sales period especially in the month of December and top revenue products, also identifying high-performing cities and temporal trends for targeted marketing and inventory optimization.",
       method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Temporal & Geographic Analysis • Product & Customer Insights",
       impact: "Supported data-driven marketing optimization",
       role: "Data Analyst",
@@ -73,7 +73,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Shopper's Trend — Customer Behavior & Retail Analytics",
-      description: "Performed an end-to-end analysis of customer purchase behavior using a 3,900-row Kaggle dataset. Leveraged Excel and Tableau for data cleaning, EDA, and visualization to uncover insights on geographic distribution, gender demographics, product category trends, top-selling products, purchase frequency, and payment method preferences.",
+      description: "In this project I leveraged Excel and Tableau for data cleaning, EDA and visualization to uncover insights on geographic distribution, gender demographics, product category trends, top-selling products, purchase frequency and payment method preferences. Findings informed strategies for inventory optimization, targeted marketing, cross-selling and payment experience enhancements, supporting data-driven business decisions and customer engagement initiatives.",
       method: "Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Customer Segmentation • Product & Payment Analysis • Trend & Frequency Analysis",
       impact: "Enhanced customer segmentation insights",
       role: "Analytics Consultant",
@@ -85,7 +85,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Voyage of Fate: Titanic Survival Analysis & Predictive Modeling",
-      description: "Conducted a detailed statistical analysis of Titanic passenger survival patterns using a 714-record Kaggle dataset. Leveraged Excel and Tableau for data cleaning, EDA, and visualization to examine the impact of passenger class, gender, and demographics on survival outcomes. Key findings revealed higher survival rates for first-class passengers and women, highlighting socio-economic disparities and evacuation dynamics.",
+      description: "A statistical analysis of Titanic passenger survival patterns using a 714-record dataset. I leveraged Excel and Tableau for data cleaning, EDA and visualization to examine the impact of passenger class, gender and demographics on survival outcomes. Key findings revealed higher survival rates for first-class passengers and women, highlighting socio-economic disparities and evacuation dynamics.",
       method: "Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Survival Analysis • Class & Gender Impact • Historical Data Interpretation",
       impact: "Highlighted key survival drivers for modeling through descriptive analysis.",
       role: "Data Scientist",
@@ -97,7 +97,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "HR Analytics & Workforce Intelligence — MeriSkill Internship",
-      description: "Performed an in-depth HR data analysis to uncover patterns in employee attrition, overtime, work experience, and performance trends. Leveraged Excel for data cleaning, SQL for advanced querying, and Tableau for interactive dashboards. Key insights included high attrition in Sales and HR departments, overtime patterns by role and tenure, and correlations between education, work experience, and performance.",
+      description: "Conducted a comprehensive HR analytics project analyzing workforce data to identify key drivers of employee attrition, overtime trends, tenure impact and performance patterns. Utilized Excel for data preprocessing, SQL for advanced querying and KPI computation, and Tableau to design interactive dashboards for leadership reporting. The analysis revealed elevated attrition rates within Sales and HR departments, tenure-based overtime patterns and measurable correlations between education, experience and performance — supporting data-driven retention planning and workforce optimization strategies.",
       method: "Excel • SQL • Tableau • Data Cleaning • EDA • Dashboarding • HR Analytics • Attrition & Performance Insights • Workforce Optimization",
       impact: "Provided retention strategies for HR teams",
       role: "HR Data Analyst",
@@ -182,9 +182,6 @@ export default function PortfolioPreview() {
               <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
               <h2 className="text-2xl text-indigo-500 font-semibold">Data Scientist & Business Intelligence Specialist</h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl">
-                Turning Complex Data into Predictive Insights, Strategic Intelligence, and Measurable Business Growth
-              </p>
-              <p className="text-sm text-slate-500 dark:text-slate-400 max-w-2xl">
                 I am a results-driven Data Scientist with expertise in machine learning, statistical modeling, data analytics, and business intelligence. I help organizations leverage data to optimize operations, improve forecasting accuracy, and drive strategic decision-making across finance, retail, healthcare, and digital markets.
               </p>
               <div className="flex flex-wrap justify-center gap-2 text-sm text-slate-600 dark:text-slate-300">
@@ -206,9 +203,9 @@ export default function PortfolioPreview() {
             <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-2xl">
               <CardContent className="p-6 text-slate-600 dark:text-slate-300">
                 <img src="/profile.jpg" alt="Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist" loading="lazy" decoding="async" className="float-left w-32 h-32 mr-6 mb-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 object-cover" />
-                <p>I began my career as a Data Analyst in 2022, specializing in data cleaning, dashboard development, SQL querying, and business reporting. Over time, I advanced into a Data Scientist role, where I now design predictive models, perform advanced statistical analysis, and build end-to-end machine learning pipelines.</p>
-                <p className="mt-4">With hands-on experience in Python, SQL, Excel, Tableau, and data visualization tools, I deliver actionable insights that improve operational efficiency, revenue optimization, workforce analytics, and forecasting performance.</p>
-                <p className="mt-4">My expertise spans healthcare analytics, retail sales intelligence, HR analytics, and predictive modeling — helping organizations transition from reactive reporting to proactive, data-driven strategy.</p>
+                <p>I am a results-oriented Data Scientist with expertise in machine learning, statistical modeling, predictive analytics, and business intelligence. I leverage advanced analytical techniques to transform complex datasets into actionable insights that optimize operational performance, improve forecasting accuracy, and support data-driven strategic growth across finance, retail, healthcare, and digital markets.</p>
+                <p className="mt-4">I specialized in SQL querying, data cleaning, dashboard development, and performance reporting. Through hands-on project experience, continuous technical advancement and certification, I've expanded my capabilities into predictive modeling, feature engineering, exploratory data analysis (EDA), and end-to-end machine learning workflows. This progression strengthened my ability to move beyond descriptive reporting into predictive and prescriptive analytics.</p>
+                <p className="mt-4">Today, I design scalable analytical solutions for organizations seeking measurable business impact. I work with tools such as Python, SQL, Excel, and Tableau to build interactive dashboards, optimize KPIs, and develop models that improve decision-making accuracy.</p>
               </CardContent>
             </Card>
           </section>
