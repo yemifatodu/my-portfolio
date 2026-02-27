@@ -393,8 +393,8 @@ export default function PortfolioPreview() {
 
           {/* Contact Section */}
           <section id="contact" className="max-w-5xl mx-auto py-20 text-center">
-            <h2 className="text-3xl font-semibold mb-6">Hire a Remote Data Scientist or Business Intelligence Analyst</h2>
-            <p className="text-slate-500 dark:text-slate-400 mb-8">I am open to remote data science, analytics, and business intelligence opportunities. Whether you need predictive modeling, SQL optimization, machine learning solutions, or executive-level dashboards, I'm available to collaborate.</p>
+            <h2 className="text-3xl font-semibold mb-6">Let's Work Together</h2>
+            <p className="text-slate-500 dark:text-slate-400 mb-8">Connect with me on any of these platforms</p>
             <div className="flex flex-wrap justify-center gap-8">
               <a href="https://github.com/yemifatodu/EDUCATION-CERTIFICATE?tab=readme-ov-file#education-certificate" className="relative group hover:text-indigo-500 transition transform hover:scale-110" aria-label="GitHub">
                 <Github size={28} />
