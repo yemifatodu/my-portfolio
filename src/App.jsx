@@ -162,12 +162,14 @@ export default function PortfolioPreview() {
             animate={reduceMotion ? false : { opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }} className="max-w-5xl mx-auto text-center py-20">
             <div className="flex flex-col items-center gap-6">
-              <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
-              <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl">Data Scientist | Analytics | Machine Learning | Business Intelligence</p>
-              <div className="flex flex-wrap justify-center items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+            <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl">Data Scientist | Analytics | Machine Learning | Business Intelligence</p>
+            <div className="flex flex-wrap justify-center gap-2 text-sm text-slate-600 dark:text-slate-300">
               <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Open to Remote</span>
               <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Business & Finance</span>
               <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Retail & E‑commerce</span>
+            </div>
+            <div className="flex justify-center gap-4">
               <Button asChild className="rounded-2xl"><a href="#skills">View Skills</a></Button>
               <Button asChild variant="outline" className="rounded-2xl"><a href="https://your-cv-link.com" target="_blank" rel="noopener noreferrer">View CV</a></Button>
               <Button asChild variant="ghost" className="rounded-2xl"><a href="#projects">Projects</a></Button>
