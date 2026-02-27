@@ -180,10 +180,8 @@ export default function PortfolioPreview() {
             className="max-w-5xl mx-auto text-center py-20">
             <div className="flex flex-col items-center gap-6">
               <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
-              <h2 className="text-2xl text-indigo-500 font-semibold">Data Scientist & Business Intelligence Specialist</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl">
-                I am a results-driven Data Scientist with expertise in machine learning, statistical modeling, data analytics, and business intelligence. I help organizations leverage data to optimize operations, improve forecasting accuracy, and drive strategic decision-making across finance, retail, healthcare, and digital markets.
-              </p>
+              <h2 className="text-2xl text-indigo-500 font-semibold">Data Scientist | Data Analyst | Machine Learning Engineer | Business Intelligence Analyst</h2>
+
               <div className="flex flex-wrap justify-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                 <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Open to Remote</span>
                 <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Business & Finance</span>
@@ -269,8 +267,7 @@ export default function PortfolioPreview() {
 
           {/* Skills Section */}
           <section id="skills" className="max-w-5xl mx-auto py-16">
-            <h2 className="text-3xl font-semibold mb-4">Core Data Science & Business Intelligence Skills</h2>
-            <p className="text-slate-500 dark:text-slate-400 mb-8">My technical expertise spans machine learning, statistical analysis, predictive modeling, SQL database querying, business intelligence dashboarding, and data visualization. I combine analytical rigor with strategic thinking to translate raw datasets into actionable business insights.</p>
+            <h2 className="text-3xl font-semibold mb-8">Core Skills</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {skillsData.map(skill => (
                 <div key={skill.name} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5">
