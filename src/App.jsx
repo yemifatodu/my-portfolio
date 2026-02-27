@@ -180,7 +180,7 @@ export default function PortfolioPreview() {
             className="max-w-5xl mx-auto text-center py-20">
             <div className="flex flex-col items-center gap-6">
               <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
-              <h2 className="text-2xl text-indigo-500 font-semibold">Data Scientist | Data Analyst | Machine Learning Engineer | Business Intelligence Analyst</h2>
+              <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Data Scientist | Data Analyst | Machine Learning Engineer | Business Intelligence Analyst</h2>
 
               <div className="flex flex-wrap justify-center gap-2 text-sm text-slate-600 dark:text-slate-300">
                 <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Open to Remote</span>
@@ -197,7 +197,7 @@ export default function PortfolioPreview() {
 
           {/* About Section */}
           <section id="about" className="max-w-5xl mx-auto py-16">
-            <h2 className="text-3xl font-semibold mb-6">About Opeyemi Ebenezer Fatodu</h2>
+            <h2 className="text-3xl font-semibold mb-6">About Me</h2>
             <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-2xl">
               <CardContent className="p-6 text-slate-600 dark:text-slate-300">
                 <img src="/profile.jpg" alt="Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist" loading="lazy" decoding="async" className="float-left w-32 h-32 mr-6 mb-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 object-cover" />
