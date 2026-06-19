@@ -5,7 +5,6 @@ import { Github, Linkedin, Sun, Moon } from "lucide-react";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-
 export default function PortfolioPreview() {
   const [theme, setTheme] = React.useState('dark');
   React.useEffect(() => {
@@ -13,6 +12,7 @@ export default function PortfolioPreview() {
   }, [theme]);
 
   const reduceMotion = useReducedMotion();
+
   const skillsData = [
     { name: "Statistical Analysis", level: 75 },
     { name: "Data Mining", level: 70 },
@@ -49,7 +49,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Retail Sales Data Analysis & Business Intelligence Dashboard (Adidas 2020–2021)",
-      description: "Conducted a full-scale sales analytics and business intelligence project analyzing 9,649 retail transactions across five U.S. regions. Using SQL, Excel and Tableau dashboards, I evaluated revenue growth, product performance, operating margins and post-pandemic sales trends. The analysis identified high-growth regions and optimized product-level revenue strategy, supporting data-driven retail decision-making.",
+      description: "Conducted a full-scale sales analytics and business intelligence project analyzing 9,649 retail transactions across five U.S. regions. Using SQL, Excel and Tableau dashboards, I evaluated revenue growth, product performance, operating margins and post-pandemic sales trends.",
       method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Regional & Product Analysis • KPI Tracking",
       impact: "Identified top-performing regions driving revenue stability",
       role: "Business Intelligence Analyst",
@@ -61,7 +61,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Sales Analysis — Data-Driven Marketing Intelligence (Intern Project)",
-      description: "I performed end-to-end sales analytics on 185,950 transactions for the year 2019, leveraging SQL, Excel and Tableau to clean, aggregate and visualize data by product, city, month and hour. Key insights included peak sales period especially in the month of December and top revenue products, also identifying high-performing cities and temporal trends for targeted marketing and inventory optimization.",
+      description: "I performed end-to-end sales analytics on 185,950 transactions for the year 2019, leveraging SQL, Excel and Tableau to clean, aggregate and visualize data by product, city, month and hour. Key insights included peak sales in December, top revenue products, high-performing cities and temporal trends.",
       method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Temporal & Geographic Analysis • Product & Customer Insights",
       impact: "Supported data-driven marketing optimization",
       role: "Data Analyst",
@@ -73,7 +73,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Shopper's Trend — Customer Behavior & Retail Analytics",
-      description: "In this project I leveraged Excel and Tableau for data cleaning, EDA and visualization to uncover insights on geographic distribution, gender demographics, product category trends, top-selling products, purchase frequency and payment method preferences. Findings informed strategies for inventory optimization, targeted marketing, cross-selling and payment experience enhancements, supporting data-driven business decisions and customer engagement initiatives.",
+      description: "Leveraged Excel and Tableau for data cleaning, EDA and visualization to uncover insights on geographic distribution, gender demographics, product category trends, top-selling products, purchase frequency and payment method preferences.",
       method: "Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Customer Segmentation • Product & Payment Analysis • Trend & Frequency Analysis",
       impact: "Enhanced customer segmentation insights",
       role: "Analytics Consultant",
@@ -85,7 +85,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "Voyage of Fate: Titanic Survival Analysis & Predictive Modeling",
-      description: "A statistical analysis of Titanic passenger survival patterns using a 714-record dataset. I leveraged Excel and Tableau for data cleaning, EDA and visualization to examine the impact of passenger class, gender and demographics on survival outcomes. Key findings revealed higher survival rates for first-class passengers and women, highlighting socio-economic disparities and evacuation dynamics.",
+      description: "A statistical analysis of Titanic passenger survival patterns using a 714-record dataset. Leveraged Excel and Tableau to examine the impact of passenger class, gender and demographics on survival outcomes. Higher survival rates for first-class passengers and women highlighted socio-economic disparities.",
       method: "Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Survival Analysis • Class & Gender Impact • Historical Data Interpretation",
       impact: "Highlighted key survival drivers for modeling through descriptive analysis.",
       role: "Data Scientist",
@@ -97,7 +97,7 @@ export default function PortfolioPreview() {
     },
     {
       title: "HR Analytics & Workforce Intelligence — MeriSkill Internship",
-      description: "Conducted a comprehensive HR analytics project analyzing workforce data to identify key drivers of employee attrition, overtime trends, tenure impact and performance patterns. Utilized Excel for data preprocessing, SQL for advanced querying and KPI computation, and Tableau to design interactive dashboards for leadership reporting. The analysis revealed elevated attrition rates within Sales and HR departments, tenure-based overtime patterns and measurable correlations between education, experience and performance — supporting data-driven retention planning and workforce optimization strategies.",
+      description: "Conducted a comprehensive HR analytics project analyzing workforce data to identify key drivers of employee attrition, overtime trends, tenure impact and performance patterns. Utilized Excel, SQL and Tableau to design interactive dashboards for leadership reporting.",
       method: "Excel • SQL • Tableau • Data Cleaning • EDA • Dashboarding • HR Analytics • Attrition & Performance Insights • Workforce Optimization",
       impact: "Provided retention strategies for HR teams",
       role: "HR Data Analyst",
@@ -128,11 +128,11 @@ export default function PortfolioPreview() {
     <>
       <Helmet>
         <title>Opeyemi Fatodu | Data Scientist & Business Intelligence Specialist</title>
-        <meta name="description" content="Opeyemi Ebenezer Fatodu is a Data Scientist and Business Intelligence Specialist with expertise in machine learning, predictive modeling, SQL analytics, and data visualization. Explore portfolio projects, dashboards, and analytics insights." />
+        <meta name="description" content="Opeyemi Ebenezer Fatodu is a Data Scientist and Business Intelligence Specialist with expertise in machine learning, predictive modeling, SQL analytics, and data visualization." />
         <meta name="keywords" content="Data Scientist, Data Analyst, Machine Learning Engineer, Business Intelligence Analyst, Predictive Analytics Consultant, SQL Data Analyst, Tableau Dashboard Developer, Remote Data Scientist, Python Data Science" />
         <meta name="author" content="Opeyemi Ebenezer Fatodu" />
         <meta property="og:title" content="Opeyemi Fatodu | Data Scientist & Business Intelligence Specialist" />
-        <meta property="og:description" content="Explore projects, dashboards, and analytics insights by Opeyemi Fatodu — a results-driven Data Scientist specializing in machine learning, SQL, and business intelligence." />
+        <meta property="og:description" content="Explore projects, dashboards, and analytics insights by Opeyemi Fatodu." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://my-portfolio-two-beta-69.vercel.app/" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -143,57 +143,156 @@ export default function PortfolioPreview() {
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-100 dark:from-slate-950 dark:to-slate-900 text-slate-900 dark:text-white">
         <main role="main">
 
-          {/* Sticky Navbar */}
+          {/* ═══════════════════════════════════════════════
+              BANNER — navbar + hero all in one section
+          ═══════════════════════════════════════════════ */}
+          <div className="relative w-full overflow-hidden" style={{ minHeight: "520px" }}>
+
+            {/* Background image */}
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: "url('/Yemi_Fatodu.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.62)" }} />
+            {/* Indigo tint */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(10,10,40,0.5) 0%, transparent 60%, rgba(0,0,0,0.4) 100%)" }} />
+            {/* Bottom fade */}
+            <div className="absolute bottom-0 left-0 right-0" style={{ height: "80px", background: "linear-gradient(to bottom, transparent, rgba(8,8,20,0.9))", pointerEvents: "none" }} />
+
+            {/* ── Navbar row inside banner ── */}
+            <div className="relative z-50 w-full border-b border-white/10">
+              <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+                <span className="text-xl font-bold text-white">Yemi Fatodu</span>
+                <nav className="flex items-center space-x-6">
+                  <button
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+                    aria-label="Toggle theme"
+                  >
+                    {theme === 'dark' ? <Sun size={18} color="white" /> : <Moon size={18} color="white" />}
+                  </button>
+                  <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium">Home</a>
+                  <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium">About</a>
+                  <div className="relative group">
+                    <button className="text-white/80 hover:text-white transition text-sm font-medium">Contact ▾</button>
+                    <div className="absolute right-0 mt-2 w-56 bg-slate-900 border border-slate-700 rounded-xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all z-50">
+                      <a href="mailto:yemifatodu@gmail.com" className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white text-sm rounded-t-xl">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z" /><polyline points="22,6 12,13 2,6" /></svg>
+                        Email
+                      </a>
+                      <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white text-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z" /></svg>
+                        Mobile Phone
+                      </a>
+                      <a href="tel:+2347033736377" className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white text-sm rounded-b-xl">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11h18" /><path d="M5 7h14" /><path d="M7 15h10" /></svg>
+                        Landline
+                      </a>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+            {/* ── Hero content inside banner ── */}
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16">
+              <motion.h1
+                initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4"
+                style={{ letterSpacing: "-0.02em", lineHeight: 1.1 }}
+              >
+                Opeyemi Ebenezer <span style={{ color: "#818cf8" }}>Fatodu</span>
+              </motion.h1>
+
+              <motion.h2
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="text-sm md:text-base font-medium mb-5"
+                style={{ color: "rgba(200,198,240,0.85)", letterSpacing: "0.02em" }}
+              >
+                Data Scientist &nbsp;|&nbsp; Data Analyst &nbsp;|&nbsp; Machine Learning Engineer &nbsp;|&nbsp; Business Intelligence Analyst
+              </motion.h2>
+
+              {/* Gradient divider */}
+              <motion.div
+                initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+                animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                style={{ width: "60px", height: "2px", background: "linear-gradient(90deg, #818cf8, #00d4aa)", borderRadius: "100px", marginBottom: "1.5rem" }}
+              />
+
+              {/* Tags */}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-wrap justify-center gap-2 mb-8"
+              >
+                {["Open to Remote", "Business & Finance", "Retail & E‑commerce"].map(tag => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-sm rounded-full"
+                    style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.85)", backdropFilter: "blur(8px)" }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="flex flex-wrap justify-center gap-3"
+              >
+                <a href="#skills" className="px-6 py-2.5 rounded-2xl text-sm font-semibold transition hover:-translate-y-0.5" style={{ background: "#6366f1", color: "#fff", boxShadow: "0 4px 20px rgba(99,102,241,0.4)" }}>
+                  View Skills
+                </a>
+                <a href="https://your-cv-link.com" target="_blank" rel="noopener noreferrer" className="px-6 py-2.5 rounded-2xl text-sm font-semibold transition hover:-translate-y-0.5" style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", backdropFilter: "blur(8px)" }}>
+                  View CV
+                </a>
+                <a href="#projects" className="px-6 py-2.5 rounded-2xl text-sm font-semibold transition hover:-translate-y-0.5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)", backdropFilter: "blur(8px)" }}>
+                  Projects
+                </a>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Sticky Navbar — shows after scrolling past banner */}
           <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 sticky top-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur border-b border-slate-200 dark:border-slate-800 z-50">
             <h1 className="text-xl font-bold">Yemi Fatodu</h1>
             <nav className="flex items-center space-x-6">
               <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-white dark:bg-slate-800 transition" aria-label="Toggle theme">
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
-              <a href="#" className="hover:text-indigo-500">Home</a>
-              <a href="#about" className="hover:text-indigo-500">About</a>
+              <a href="#" className="hover:text-indigo-500 text-sm">Home</a>
+              <a href="#about" className="hover:text-indigo-500 text-sm">About</a>
               <div className="relative group">
-                <button className="hover:text-indigo-500">Contact</button>
+                <button className="hover:text-indigo-500 text-sm">Contact ▾</button>
                 <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all">
-                  <a href="mailto:yemifatodu@gmail.com" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-700">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z" /><polyline points="22,6 12,13 2,6" /></svg>
-                    <span>Email</span>
+                  <a href="mailto:yemifatodu@gmail.com" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z" /><polyline points="22,6 12,13 2,6" /></svg>Email
                   </a>
-                  <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-700">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z" /></svg>
-                    <span>Mobile Phone</span>
+                  <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z" /></svg>Mobile Phone
                   </a>
-                  <a href="tel:+2347033736377" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-700">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11h18" /><path d="M5 7h14" /><path d="M7 15h10" /></svg>
-                    <span>Landline</span>
+                  <a href="tel:+2347033736377" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-700 text-sm">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 11h18" /><path d="M5 7h14" /><path d="M7 15h10" /></svg>Landline
                   </a>
                 </div>
               </div>
             </nav>
           </header>
-
-          {/* Hero Section */}
-          <motion.section
-            initial={reduceMotion ? false : { opacity: 0, y: 40 }}
-            animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto text-center py-20">
-            <div className="flex flex-col items-center gap-6">
-              <h1 className="text-4xl md:text-5xl font-bold">Opeyemi Ebenezer Fatodu</h1>
-              <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Data Scientist | Data Analyst | Machine Learning Engineer | Business Intelligence Analyst</h2>
-
-              <div className="flex flex-wrap justify-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Open to Remote</span>
-                <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Business & Finance</span>
-                <span className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full">Retail & E‑commerce</span>
-              </div>
-              <div className="flex justify-center gap-4">
-                <Button asChild className="rounded-2xl"><a href="#skills">View Skills</a></Button>
-                <Button asChild variant="outline" className="rounded-2xl"><a href="https://your-cv-link.com" target="_blank" rel="noopener noreferrer">View CV</a></Button>
-                <Button asChild variant="ghost" className="rounded-2xl"><a href="#projects">Projects</a></Button>
-              </div>
-            </div>
-          </motion.section>
 
           {/* About Section */}
           <section id="about" className="max-w-5xl mx-auto py-16">
@@ -202,7 +301,7 @@ export default function PortfolioPreview() {
               <CardContent className="p-6 text-slate-600 dark:text-slate-300">
                 <img src="/profile.jpg" alt="Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist" loading="lazy" decoding="async" className="float-left w-32 h-32 mr-6 mb-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 object-cover" />
                 <p>I am a results-oriented Data Scientist with expertise in machine learning, statistical modeling, predictive analytics, and business intelligence. I leverage advanced analytical techniques to transform complex datasets into actionable insights that optimize operational performance, improve forecasting accuracy, and support data-driven strategic growth across finance, retail, healthcare, and digital markets.</p>
-                <p className="mt-4">I specialized in SQL querying, data cleaning, dashboard development, and performance reporting. Through hands-on project experience, continuous technical advancement and certification, I've expanded my capabilities into predictive modeling, feature engineering, exploratory data analysis (EDA), and end-to-end machine learning workflows. This progression strengthened my ability to move beyond descriptive reporting into predictive and prescriptive analytics.</p>
+                <p className="mt-4">I specialized in SQL querying, data cleaning, dashboard development, and performance reporting. Through hands-on project experience, continuous technical advancement and certification, I've expanded my capabilities into predictive modeling, feature engineering, exploratory data analysis (EDA), and end-to-end machine learning workflows.</p>
                 <p className="mt-4">Today, I design scalable analytical solutions for organizations seeking measurable business impact. I work with tools such as Python, SQL, Excel, and Tableau to build interactive dashboards, optimize KPIs, and develop models that improve decision-making accuracy.</p>
               </CardContent>
             </Card>
@@ -211,7 +310,7 @@ export default function PortfolioPreview() {
           {/* Blog Section */}
           <section id="blogs" className="max-w-5xl mx-auto py-16">
             <h2 className="text-3xl font-semibold mb-4">Data Science Articles & Analytics Insights</h2>
-            <p className="text-slate-500 dark:text-slate-400 mb-8">I regularly publish in-depth articles on machine learning, predictive analytics, business intelligence, and retail data strategy. My blog content explores real-world applications of data science, model optimization techniques, and industry-driven analytics solutions.</p>
+            <p className="text-slate-500 dark:text-slate-400 mb-8">I regularly publish in-depth articles on machine learning, predictive analytics, business intelligence, and retail data strategy.</p>
             <div className="grid md:grid-cols-2 gap-6">
               {[{
                 title: "Harnessing Data Science for Diabetes Prediction",
@@ -276,12 +375,7 @@ export default function PortfolioPreview() {
                     <span className="text-sm text-slate-500 dark:text-slate-400">{skill.level}%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-4">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      viewport={{ once: true }}
-                      className="bg-indigo-500 h-4 rounded-full" />
+                    <motion.div initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }} className="bg-indigo-500 h-4 rounded-full" />
                   </div>
                 </div>
               ))}
@@ -299,12 +393,7 @@ export default function PortfolioPreview() {
                     <span className="text-sm text-slate-500 dark:text-slate-400">{tool.level}%</span>
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-4">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${tool.level}%` }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      viewport={{ once: true }}
-                      className="bg-indigo-500 h-4 rounded-full" />
+                    <motion.div initial={{ width: 0 }} whileInView={{ width: `${tool.level}%` }} transition={{ duration: 0.8, ease: "easeOut" }} viewport={{ once: true }} className="bg-indigo-500 h-4 rounded-full" />
                   </div>
                 </a>
               ))}
@@ -319,18 +408,14 @@ export default function PortfolioPreview() {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold">Data Scientist Intern – MeriSkill (2024)</h3>
                   <p className="text-indigo-400 text-sm">MeriSkill • 2024</p>
-                  <p className="text-slate-500 dark:text-slate-400 mt-3">
-                    Developed predictive analytics models and performed statistical analysis on healthcare and business datasets. Built data pipelines, engineered features, and deployed interactive dashboards for performance monitoring.
-                  </p>
+                  <p className="text-slate-500 dark:text-slate-400 mt-3">Developed predictive analytics models and performed statistical analysis on healthcare and business datasets. Built data pipelines, engineered features, and deployed interactive dashboards for performance monitoring.</p>
                 </CardContent>
               </Card>
               <Card className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-2xl">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold">Freelance Data Analyst & BI Consultant (2023–Present)</h3>
                   <p className="text-indigo-400 text-sm">Remote • 2023 – Present</p>
-                  <p className="text-slate-500 dark:text-slate-400 mt-3">
-                    Delivered business intelligence dashboards, SQL-driven reporting systems, and machine learning prototypes for clients across retail, HR analytics, and operational strategy domains.
-                  </p>
+                  <p className="text-slate-500 dark:text-slate-400 mt-3">Delivered business intelligence dashboards, SQL-driven reporting systems, and machine learning prototypes for clients across retail, HR analytics, and operational strategy domains.</p>
                 </CardContent>
               </Card>
             </div>
@@ -342,12 +427,10 @@ export default function PortfolioPreview() {
             <p className="text-slate-500 dark:text-slate-400 mb-8">View my professional certifications, projects, and contributions on these platforms.</p>
             <div className="flex justify-center gap-8">
               <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl hover:border-indigo-500 transition">
-                <Linkedin size={24} />
-                <span className="font-medium">LinkedIn</span>
+                <Linkedin size={24} /><span className="font-medium">LinkedIn</span>
               </a>
               <a href="https://github.com/yemifatodu/EDUCATION-CERTIFICATE?tab=readme-ov-file#education-certificate" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-6 py-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl hover:border-indigo-500 transition">
-                <Github size={24} />
-                <span className="font-medium">GitHub</span>
+                <Github size={24} /><span className="font-medium">GitHub</span>
               </a>
             </div>
           </section>
@@ -393,7 +476,7 @@ export default function PortfolioPreview() {
             <h2 className="text-3xl font-semibold mb-6">Let's Work Together</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-8">Connect with me on any of these platforms</p>
             <div className="flex flex-wrap justify-center gap-8">
-              <a href="https://github.com/yemifatodu/EDUCATION-CERTIFICATE?tab=readme-ov-file#education-certificate" className="relative group hover:text-indigo-500 transition transform hover:scale-110" aria-label="GitHub">
+              <a href="https://github.com/yemifatodu" className="relative group hover:text-indigo-500 transition transform hover:scale-110" aria-label="GitHub">
                 <Github size={28} />
                 <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-white dark:bg-slate-800 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">GitHub</span>
               </a>
