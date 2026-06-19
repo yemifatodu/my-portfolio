@@ -15,7 +15,6 @@ export default function PortfolioPreview() {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [showScrollTop, setShowScrollTop] = React.useState(false);
   const [expandedAbout, setExpandedAbout] = React.useState(false);
-  const [expandedSkills, setExpandedSkills] = React.useState({});
 
   // Apply theme and save to localStorage
   React.useEffect(() => {
@@ -33,14 +32,6 @@ export default function PortfolioPreview() {
   }, []);
 
   const reduceMotion = useReducedMotion();
-
-  // Toggle expanded state for a specific skill category
-  const toggleSkillExpand = (category) => {
-    setExpandedSkills(prev => ({
-      ...prev,
-      [category]: !prev[category]
-    }));
-  };
 
   // ─── Categorized Skills ───
   const categorizedSkills = [
@@ -194,48 +185,20 @@ export default function PortfolioPreview() {
     }
   ];
 
-  // ─── FAQ Data ───
-  const faqData = [
-    {
-      question: "What is Huuboi and what does it do?",
-      answer: "Huuboi is a global multi-service travel ecosystem I founded and architected. It unifies flight tracking, hotel distribution, car rentals, travel insurance, and regional eSIM marketplaces into a single dashboard interface, with AI-powered budget planning and automated content generation. The platform runs across six continents and serves as a production-grade demonstration of my full-stack and data architecture capabilities."
-    },
-    {
-      question: "What does a Data Scientist do on a daily basis?",
-      answer: "A Data Scientist designs and deploys machine learning models, performs statistical analysis on complex datasets, engineers features for predictive accuracy, conducts exploratory data analysis (EDA), and translates raw data into actionable business insights. They work across the full analytics lifecycle—from data collection and cleaning to model deployment and performance monitoring—to solve high-impact business problems."
-    },
-    {
-      question: "What does a Data Analyst do on a daily basis?",
-      answer: "A Data Analyst focuses on querying, cleaning, and transforming raw data into structured formats for analysis. They build interactive dashboards and visualizations, generate performance reports, track KPIs, and identify trends that inform business decisions. Using tools like SQL, Excel, and Tableau, they bridge the gap between raw data and stakeholder comprehension through clear, actionable reporting."
-    },
-    {
-      question: "What does a Business Intelligence (BI) Analyst do on a daily basis?",
-      answer: "A BI Analyst translates business needs into technical data requirements, designing dashboards and reporting systems that monitor organizational performance. They integrate data from multiple sources, develop ETL pipelines, create data models, and deliver executive-level visualizations that enable leadership to make faster, data-informed strategic decisions. They ensure data accuracy, governance, and accessibility across the organization."
-    },
-    {
-      question: "What tools does Opeyemi Fatodu use for data and engineering?",
-      answer: "I work with a hybrid stack spanning data science and full-stack engineering: Python (Pandas, NumPy, ML), SQL Server, Excel, Tableau, Next.js, React, Supabase/PostgreSQL, and Vercel for cloud deployment. This allows me to build end-to-end solutions—from predictive models and BI dashboards to production-grade web applications."
-    },
-    {
-      question: "Is Opeyemi available for remote roles or consulting?",
-      answer: "Yes! I am actively open to remote Data Scientist, Business Intelligence Analyst, Full-Stack Product Architect, and Analytics Consultant opportunities globally. I'm also available for fractional CTO or technical advisory engagements for startups building data-intensive products."
-    }
-  ];
-
   // ─── Render ───
   return (
     <>
       <Helmet>
-        <title>Opeyemi Fatodu | Data Scientist & Business Intelligence Specialist</title>
-        <meta name="description" content="Opeyemi Ebenezer Fatodu is a Data Scientist, BI Specialist, and tech founder with deep expertise in machine learning, analytical architectures, custom data pipelines, and interactive production tools." />
-        <meta name="keywords" content="Data Scientist, Data Analyst, Machine Learning Engineer, Business Intelligence Analyst, Predictive Analytics Consultant, SQL Data Analyst, Tableau Dashboard Developer, Remote Data Scientist, Python Data Science, Web Application Architecture" />
+        <title>Opeyemi Fatodu | Data Scientist & Full-Stack Developer</title>
+        <meta name="description" content="Opeyemi Ebenezer Fatodu is a Data Scientist, Full-Stack Developer, and tech founder with deep expertise in machine learning, analytical architectures, custom data pipelines, and interactive production tools." />
+        <meta name="keywords" content="Data Scientist, Full-Stack Developer, Machine Learning Engineer, Business Intelligence Analyst, Predictive Analytics Consultant, SQL Data Analyst, Tableau Dashboard Developer, Remote Data Scientist, Python Data Science, Web Application Architecture" />
         <meta name="author" content="Opeyemi Ebenezer Fatodu" />
-        <meta property="og:title" content="Opeyemi Fatodu | Data Scientist & Business Intelligence Specialist" />
+        <meta property="og:title" content="Opeyemi Fatodu | Data Scientist & Full-Stack Developer" />
         <meta property="og:description" content="Explore advanced projects, predictive analytical systems, and software engineering portfolios created by Opeyemi Fatodu." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://yemifatodu.online" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Opeyemi Fatodu | Data Scientist" />
+        <meta name="twitter:title" content="Opeyemi Fatodu | Data Scientist & Full-Stack Developer" />
         <meta name="twitter:description" content="Machine Learning, Business Intelligence, Data Pipelines — portfolio and real-world system architecture blueprints." />
         <link rel="canonical" href="https://yemifatodu.online" />
       </Helmet>
@@ -243,164 +206,144 @@ export default function PortfolioPreview() {
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-100 dark:from-slate-950 dark:to-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
         <main role="main">
 
-          {/* ═══ BANNER HERO — Reduced height ═══ */}
-          <div className="relative w-full overflow-hidden" style={{ minHeight: "380px", maxHeight: "420px" }}>
-            {/* Background Image - Full page cover */}
-            <div 
-              className="absolute inset-0 w-full h-full" 
-              style={{ 
-                backgroundImage: "url('/Yemi_Fatodu.jpg')", 
-                backgroundSize: "cover", 
-                backgroundPosition: "center", 
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed"
-              }} 
-            />
-            {/* Overlays */}
-            <div className="absolute inset-0" style={{ background: "rgba(10,15,30,0.68)" }} />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.75) 0%, transparent 60%, rgba(2,6,23,0.5) 100%)" }} />
-            <div className="absolute bottom-0 left-0 right-0" style={{ height: "60px", background: "linear-gradient(to bottom, transparent, rgba(2,6,23,0.95))", pointerEvents: "none" }} />
-
-            {/* ─── Single Navbar ─── */}
-            <div className="relative z-50 w-full border-b border-white/10 backdrop-blur-sm">
-              <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
-                <span className="text-xl font-bold text-white tracking-tight">Yemi Fatodu</span>
-                
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center space-x-5">
-                  <button 
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-                    className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
-                    aria-label="Toggle theme"
-                  >
-                    {theme === 'dark' ? <Sun size={16} color="white" /> : <Moon size={16} color="white" />}
-                  </button>
-                  <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium">Home</a>
-                  <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium">About</a>
-                  <a href="#projects" className="text-white/80 hover:text-white transition text-sm font-medium">Projects</a>
-                  <a href="#skills" className="text-white/80 hover:text-white transition text-sm font-medium">Skills</a>
-                  <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 font-semibold transition text-sm flex items-center gap-1">
-                    Huuboi.com <span className="text-xs">↗</span>
-                  </a>
-                  <div className="relative group">
-                    <button className="text-white/80 hover:text-white transition text-sm font-medium flex items-center gap-0.5">Contact ▾</button>
-                    <div className="absolute right-0 mt-2 w-56 bg-slate-900/95 border border-slate-700/80 rounded-xl shadow-2xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 backdrop-blur-md">
-                      <a href="mailto:yemifatodu@gmail.com" className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800/80 hover:text-white text-sm rounded-t-xl">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z" /><polyline points="22,6 12,13 2,6" /></svg>
-                        Email
-                      </a>
-                      <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800/80 hover:text-white text-sm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z" /></svg>
-                        Mobile Phone
-                      </a>
-                    </div>
+          {/* ─── Single Navbar ─── */}
+          <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 transition-colors">
+            <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
+              <span className="text-xl font-bold tracking-tight">Yemi Fatodu</span>
+              
+              {/* Desktop Nav */}
+              <nav className="hidden md:flex items-center space-x-5">
+                <button 
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+                  className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200" 
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+                <a href="#" className="hover:text-indigo-500 transition text-sm font-medium">Home</a>
+                <a href="#about" className="hover:text-indigo-500 transition text-sm font-medium">About</a>
+                <a href="#projects" className="hover:text-indigo-500 transition text-sm font-medium">Projects</a>
+                <a href="#skills" className="hover:text-indigo-500 transition text-sm font-medium">Skills</a>
+                <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 font-semibold transition text-sm flex items-center gap-1">
+                  Huuboi.com <span className="text-xs">↗</span>
+                </a>
+                <div className="relative group">
+                  <button className="hover:text-indigo-500 transition text-sm font-medium flex items-center gap-0.5">Contact ▾</button>
+                  <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50">
+                    <a href="mailto:yemifatodu@gmail.com" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm rounded-t-xl">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z" /><polyline points="22,6 12,13 2,6" /></svg>
+                      Email
+                    </a>
+                    <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z" /></svg>
+                      Mobile Phone
+                    </a>
                   </div>
-                </nav>
+                </div>
+              </nav>
 
-                {/* Mobile Nav */}
-                <div className="flex items-center gap-2 md:hidden">
-                  <button 
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-                    className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
-                    aria-label="Toggle theme"
-                  >
-                    {theme === 'dark' ? <Sun size={16} color="white" /> : <Moon size={16} color="white" />}
-                  </button>
-                  <button 
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                    className="p-1.5 text-white/80 hover:text-white transition"
-                    aria-label="Toggle menu"
-                  >
-                    {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-                  </button>
+              {/* Mobile Nav */}
+              <div className="flex items-center gap-2 md:hidden">
+                <button 
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+                  className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200" 
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+                <button 
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                  className="p-1.5 hover:text-indigo-500 transition"
+                  aria-label="Toggle menu"
+                >
+                  {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Dropdown */}
+            {mobileMenuOpen && (
+              <div className="md:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-6 py-3 flex flex-col gap-2">
+                <a href="#" className="hover:text-indigo-500 transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Home</a>
+                <a href="#about" className="hover:text-indigo-500 transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>About</a>
+                <a href="#projects" className="hover:text-indigo-500 transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Projects</a>
+                <a href="#skills" className="hover:text-indigo-500 transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+                <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 font-semibold text-sm py-1 flex items-center gap-1">
+                  Huuboi.com <span className="text-xs">↗</span>
+                </a>
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+                  <a href="mailto:yemifatodu@gmail.com" className="text-sm hover:text-indigo-500 transition">📧 Email</a>
+                  <a href="tel:+14092695122" className="text-sm hover:text-indigo-500 transition">📱 Mobile Phone</a>
                 </div>
               </div>
+            )}
+          </header>
 
-              {/* Mobile Dropdown */}
-              {mobileMenuOpen && (
-                <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-white/10 px-6 py-3 flex flex-col gap-2">
-                  <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Home</a>
-                  <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>About</a>
-                  <a href="#projects" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Projects</a>
-                  <a href="#skills" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Skills</a>
-                  <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 font-semibold text-sm py-1 flex items-center gap-1">
-                    Huuboi.com <span className="text-xs">↗</span>
-                  </a>
-                  <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
-                    <a href="mailto:yemifatodu@gmail.com" className="text-sm text-slate-300 hover:text-white transition">📧 Email</a>
-                    <a href="tel:+14092695122" className="text-sm text-slate-300 hover:text-white transition">📱 Mobile Phone</a>
-                  </div>
-                </div>
-              )}
-            </div>
+          {/* ─── Hero Section ─── */}
+          <section className="max-w-5xl mx-auto py-12 px-6 text-center">
+            <motion.h1
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 tracking-tight"
+            >
+              Opeyemi Ebenezer <span className="text-indigo-500">Fatodu</span>
+            </motion.h1>
 
-            {/* ─── Hero Content ─── */}
-            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-4">
-              <motion.h1
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight"
-                style={{ lineHeight: 1.1 }}
+            <motion.h2
+              initial={reduceMotion ? false : { opacity: 0, y: 15 }}
+              animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-sm md:text-base font-medium mb-4 max-w-3xl mx-auto leading-relaxed text-slate-600 dark:text-slate-300"
+            >
+              Data Scientist &nbsp;|&nbsp; Full-Stack Developer &nbsp;|&nbsp; Business Intelligence Specialist &nbsp;|&nbsp; Founder of Huuboi
+            </motion.h2>
+
+            <motion.div
+              initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+              animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="w-16 h-0.5 rounded-full mb-5 mx-auto bg-gradient-to-r from-indigo-500 to-emerald-400"
+            />
+
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="flex flex-wrap justify-center gap-2 mb-5"
+            >
+              {["Open to Global Engineering Roles", "AI & Custom Data Pipelines", "E-Commerce & Digital Market Analytics"].map(tag => (
+                <span key={tag} className="px-3 py-1 text-xs md:text-sm rounded-full bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800/50 text-slate-700 dark:text-slate-300">
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap justify-center gap-3"
+            >
+              <a href="#skills" className="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">
+                View Capabilities
+              </a>
+              <a href="#projects" className="px-5 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 hover:-translate-y-0.5 transition duration-200">
+                Explore Architecture
+              </a>
+              <a 
+                href="/Yemi_Fatodu_CV.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="px-5 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 hover:-translate-y-0.5 transition duration-200"
               >
-                Opeyemi Ebenezer <span className="text-indigo-400">Fatodu</span>
-              </motion.h1>
-
-              <motion.h2
-                initial={reduceMotion ? false : { opacity: 0, y: 15 }}
-                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xs md:text-sm font-medium mb-3 max-w-3xl leading-relaxed text-slate-300/90 tracking-wide"
-              >
-                Data Scientist &nbsp;|&nbsp; Business Intelligence Specialist &nbsp;|&nbsp; Full-Stack Builder &nbsp;|&nbsp; Founder of Huuboi
-              </motion.h2>
-
-              <motion.div
-                initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
-                animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="w-12 h-0.5 rounded-full mb-3 bg-gradient-to-r from-indigo-400 to-emerald-400"
-              />
-
-              <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="flex flex-wrap justify-center gap-1.5 mb-3"
-              >
-                {["Open to Global Engineering Roles", "AI & Custom Data Pipelines", "E-Commerce & Digital Market Analytics"].map(tag => (
-                  <span key={tag} className="px-2.5 py-0.5 text-[10px] md:text-xs rounded-full bg-white/10 border border-white/20 text-slate-200 backdrop-blur-md">
-                    {tag}
-                  </span>
-                ))}
-              </motion.div>
-
-              <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-wrap justify-center gap-2"
-              >
-                <a href="#skills" className="px-4 py-1.5 rounded-xl text-xs font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">
-                  View Capabilities
-                </a>
-                <a href="#projects" className="px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm">
-                  Explore Architecture
-                </a>
-                <a 
-                  href="/Yemi_Fatodu_CV.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm"
-                >
-                  View CV
-                </a>
-              </motion.div>
-            </div>
-          </div>
+                View CV
+              </a>
+            </motion.div>
+          </section>
 
           {/* ─── About Me ─── */}
-          <section id="about" className="max-w-5xl mx-auto py-16 px-6">
+          <section id="about" className="max-w-5xl mx-auto py-12 px-6">
             <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
             <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm">
               <CardContent className="p-6 md:p-8 text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
@@ -484,7 +427,7 @@ export default function PortfolioPreview() {
             </Card>
           </section>
 
-          {/* ─── Articles / Research ─── */}
+          {/* ─── Articles & Research ─── */}
           <section id="articles" className="max-w-5xl mx-auto py-12 px-6">
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Articles & Research</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-8">I build and humanize technical content to clearly map operational intelligence, metric normalization, and deep machine learning strategy for the web.</p>
@@ -503,14 +446,7 @@ export default function PortfolioPreview() {
 
           {/* ─── Projects ─── */}
           <section id="projects" className="max-w-5xl mx-auto py-16 px-6">
-            <h2 className="text-3xl font-bold mb-2 tracking-tight">Featured Projects & Deployments</h2>
-
-            <div className="mb-8 p-6 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/50 rounded-2xl text-left">
-              <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Architectural Focus</p>
-              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                My work on <strong>Huuboi.com</strong> showcases how I build. Instead of looking at data science inside static reports, I deploy active web systems where analytical structures, API connections, database layers, and automated execution engines combine to run consumer-facing platforms.
-              </p>
-            </div>
+            <h2 className="text-3xl font-bold mb-8 tracking-tight">Featured Projects & Deployments</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projectData.map((project, idx) => {
@@ -560,12 +496,12 @@ export default function PortfolioPreview() {
                         </a>
                         <a href={project.dashboard} target="_blank" rel="noopener noreferrer" className="w-full">
                           <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent">
-                            {isHuuboi ? "eSIM Module" : "Dashboard"}
+                            {isHuuboi ? "Flight Search" : "Dashboard"}
                           </Button>
                         </a>
                         <a href={project.repo} target="_blank" rel="noopener noreferrer" className="w-full">
                           <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent">
-                            {isHuuboi ? "Insurance Engine" : "Report Link"}
+                            {isHuuboi ? "Car Rental" : "Report Link"}
                           </Button>
                         </a>
                       </div>
@@ -586,7 +522,6 @@ export default function PortfolioPreview() {
                 <div key={domain.category} className="space-y-4">
                   <h3 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 tracking-tight border-b border-slate-100 dark:border-slate-900 pb-2">{domain.category}</h3>
                   
-                  {/* 2 columns desktop, 1 column mobile */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {domain.items.map(skill => (
                       <div key={skill.name} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 shadow-sm">
@@ -611,10 +546,10 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* ─── Tools ─── */}
+          {/* ─── Tools ─── 2 columns desktop, 1 column mobile */}
           <section id="tools" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Data Systems & Frameworks</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {toolsData.map(tool => (
                 <a key={tool.name} href={tool.link} target="_blank" rel="noopener noreferrer" className="block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 hover:border-indigo-500 dark:hover:border-indigo-400 transition-all duration-300 shadow-sm group">
                   <div className="flex justify-between mb-2 items-center">
@@ -643,7 +578,7 @@ export default function PortfolioPreview() {
                 <CardContent className="p-6 md:p-8">
                   <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Product Incubation</span>
                   <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-1">Founder & System Architect – Huuboi (Global Marketplace)</h3>
-                  <p className="text-slate-400 dark:text-slate-500 text-sm font-medium">Production Environment • 2024 – Present</p>
+                  <p className="text-slate-400 dark:text-slate-500 text-sm font-medium">Production Environment • 2026 – Present</p>
                   <p className="text-slate-500 dark:text-slate-400 mt-3 text-sm leading-relaxed">Designed and deployed a unified programmatic flight, reservation, carrier telemetry, and local telecom infrastructure solution. Engineered high-efficiency backend automation algorithms managing large-scale asset indices, layout parameters, and dynamic currency conversions.</p>
                 </CardContent>
               </Card>
@@ -705,48 +640,45 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* ─── FAQ ─── */}
-          <section id="faq" className="max-w-5xl mx-auto py-12 px-6">
-            <h2 className="text-3xl font-bold mb-8 tracking-tight">Frequently Asked Questions</h2>
-            <div className="grid gap-4">
-              {faqData.map((faq, idx) => (
-                <Card key={idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-2xl shadow-sm">
-                  <CardContent className="p-6">
-                    <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 mb-1.5 tracking-tight">{faq.question}</h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-
           {/* ─── Contact ─── */}
           <section id="contact" className="max-w-5xl mx-auto py-20 text-center px-6">
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Let's Build Together</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-10 text-sm md:text-base">Initiate a global deployment or project audit across any of these verified communication channels.</p>
             <div className="flex flex-wrap justify-center gap-6 max-w-3xl mx-auto">
-              {[
-                { label: "GitHub", href: "https://github.com/yemifatodu", icon: <Github size={22} /> },
-                { label: "LinkedIn", href: "https://www.linkedin.com/in/yemi-fatodu/", icon: <Linkedin size={22} className="text-[#0077B5]" /> },
-                { label: "Medium", href: "https://medium.com/@yemifatodu", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4v16h20V4H2zm15.5 12.5c-1.7 0-3-2.1-3-4.5s1.3-4.5 3-4.5 3 2.1 3 4.5-1.3 4.5-3 4.5zm-5.5 0c-1.4 0-2.5-2.1-2.5-4.5s1.1-4.5 2.5-4.5 2.5 2.1 2.5 4.5-1.1 4.5-2.5 4.5zM5.8 15.9c-.9 0-1.8-1.7-1.8-3.9s.9-3.9 1.8-3.9 1.8 1.7 1.8 3.9-.9 3.9-1.8 3.9z" /></svg> },
-                { label: "X (Twitter)", href: "https://bit.ly/X-YEMIFATODU", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.19 8.21L23 22h-6.77l-5.29-6.89L4.8 22H1.7l7.68-8.77L1 2h6.94l4.78 6.26L18.9 2z" /></svg> },
-                { label: "YouTube", href: "https://bit.ly/YEMIFATODU", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#FF0000]"><path d="M23.5 6.2a2.9 2.9 0 0 0-2-2C19.6 3.7 12 3.7 12 3.7s-7.6 0-9.5.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 0 12a30 30 0 0 0 .5 5.8 2.9 2.9 0 0 0 2 2c1.9.5 9.5.5 9.5.5s7.6 0 9.5-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 24 12a30 30 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z" /></svg> },
-                { label: "Upwork", href: "https://www.upwork.com/freelancers/~013e5a1a04e2af9d1b", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#14A800]"><path d="M17.6 7.3c-1.6 0-2.7.9-3.5 2.4-.8-1.5-1.7-3.4-2.3-5.1H9.2v7.8c0 1.5-.8 2.4-2.1 2.4s-2.1-.9-2.1-2.4V4.6H2.8v7.9c0 2.9 1.8 4.8 4.3 4.8s4.3-1.9 4.3-4.8v-2.1c.6 1.2 1.3 2.5 1.9 3.6.8 1.4 2 3.3 4.3 3.3 2.7 0 4.5-1.9 4.5-4.7 0-2.7-1.8-4.6-4.4-4.6z" /></svg> },
-                { label: "Fiverr", href: "https://www.fiverr.com/yemi_fatodu", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#1DBF73]"><path d="M14.3 3.1c-3.1 0-5.1 1.7-5.1 5.1v1.2H7v3.2h2.2V21h3.6v-8.4h3l.6-3.2h-3.6V8.3c0-1.1.5-1.7 1.6-1.7h2V3.1h-2.1z" /></svg> }
-              ].map(social => (
-                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label={social.label}>
-                  {social.icon}
-                  <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">
-                    {social.label}
-                  </span>
-                </a>
-              ))}
+              <a href="https://github.com/yemifatodu" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="GitHub">
+                <Github size={22} />
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/yemi-fatodu/" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="LinkedIn">
+                <Linkedin size={22} className="text-[#0077B5]" />
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">LinkedIn</span>
+              </a>
+              <a href="https://medium.com/@yemifatodu" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="Medium">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4v16h20V4H2zm15.5 12.5c-1.7 0-3-2.1-3-4.5s1.3-4.5 3-4.5 3 2.1 3 4.5-1.3 4.5-3 4.5zm-5.5 0c-1.4 0-2.5-2.1-2.5-4.5s1.1-4.5 2.5-4.5 2.5 2.1 2.5 4.5-1.1 4.5-2.5 4.5zM5.8 15.9c-.9 0-1.8-1.7-1.8-3.9s.9-3.9 1.8-3.9 1.8 1.7 1.8 3.9-.9 3.9-1.8 3.9z" /></svg>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">Medium</span>
+              </a>
+              <a href="https://bit.ly/X-YEMIFATODU" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="X">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.19 8.21L23 22h-6.77l-5.29-6.89L4.8 22H1.7l7.68-8.77L1 2h6.94l4.78 6.26L18.9 2z" /></svg>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">X (Twitter)</span>
+              </a>
+              <a href="https://bit.ly/YEMIFATODU" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="YouTube">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#FF0000]"><path d="M23.5 6.2a2.9 2.9 0 0 0-2-2C19.6 3.7 12 3.7 12 3.7s-7.6 0-9.5.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 0 12a30 30 0 0 0 .5 5.8 2.9 2.9 0 0 0 2 2c1.9.5 9.5.5 9.5.5s7.6 0 9.5-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 24 12a30 30 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z" /></svg>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">YouTube</span>
+              </a>
+              <a href="https://www.upwork.com/freelancers/~013e5a1a04e2af9d1b" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="Upwork">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#14A800]"><path d="M17.6 7.3c-1.6 0-2.7.9-3.5 2.4-.8-1.5-1.7-3.4-2.3-5.1H9.2v7.8c0 1.5-.8 2.4-2.1 2.4s-2.1-.9-2.1-2.4V4.6H2.8v7.9c0 2.9 1.8 4.8 4.3 4.8s4.3-1.9 4.3-4.8v-2.1c.6 1.2 1.3 2.5 1.9 3.6.8 1.4 2 3.3 4.3 3.3 2.7 0 4.5-1.9 4.5-4.7 0-2.7-1.8-4.6-4.4-4.6z" /></svg>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">Upwork</span>
+              </a>
+              <a href="https://www.fiverr.com/yemi_fatodu" target="_blank" rel="noopener noreferrer" className="relative group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-indigo-500 dark:hover:border-indigo-400 hover:shadow-md transition transform hover:-translate-y-0.5" aria-label="Fiverr">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" className="text-[#1DBF73]"><path d="M14.3 3.1c-3.1 0-5.1 1.7-5.1 5.1v1.2H7v3.2h2.2V21h3.6v-8.4h3l.6-3.2h-3.6V8.3c0-1.1.5-1.7 1.6-1.7h2V3.1h-2.1z" /></svg>
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">Fiverr</span>
+              </a>
             </div>
           </section>
 
           {/* ─── Footer ─── */}
-          <footer className="text-center text-slate-400 dark:text-slate-500 text-xs py-8 border-t border-slate-100 dark:border-slate-900 max-w-5xl mx-auto px-6">
-            © {new Date().getFullYear()} Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist. All rights reserved.
+          <footer className="text-center text-slate-400 dark:text-slate-500 text-xs py-8 border-t border-slate-200 dark:border-slate-800 max-w-5xl mx-auto px-6">
+            © {new Date().getFullYear()} Opeyemi Ebenezer Fatodu — Data Scientist, Full-Stack Developer & Business Intelligence Specialist. All rights reserved.
           </footer>
 
         </main>
