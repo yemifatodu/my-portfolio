@@ -1,20 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Linkedin, Sun, Moon, Globe } from "lucide-react";
+import { Github, Linkedin, Sun, Moon, Globe, Menu, X } from "lucide-react";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
 export default function PortfolioPreview() {
-  const [theme, setTheme] = React.useState('dark');
+  // Theme with localStorage persistence
+  const [theme, setTheme] = React.useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved || 'dark';
+  });
   
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+  // Apply theme and save to localStorage
   React.useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const reduceMotion = useReducedMotion();
 
-  // Categorized Skills Matrix explicitly matching your strategic domains
+  // ─── Categorized Skills ───
   const categorizedSkills = [
     {
       category: "Data & Intelligence",
@@ -67,6 +75,7 @@ export default function PortfolioPreview() {
     }
   ];
 
+  // ─── Tools Data ───
   const toolsData = [
     { name: "Next.js / React", level: 90, link: "https://huuboi.com" },
     { name: "Supabase / PostgreSQL", level: 85, link: "https://huuboi.com" },
@@ -77,6 +86,7 @@ export default function PortfolioPreview() {
     { name: "Excel Advanced Analytics", level: 95, link: "https://github.com/yemifatodu/Excel-Certification-Repos" }
   ];
 
+  // ─── Projects Data ───
   const projectData = [
     {
       title: "Huuboi — Global Multi-Service Travel & Digital Infrastructure Ecosystem",
@@ -164,21 +174,35 @@ export default function PortfolioPreview() {
     }
   ];
 
+  // ─── FAQ Data ───
   const faqData = [
     {
-      question: "What industries does Opeyemi Fatodu specialize in?",
-      answer: "I specialize in healthcare analytics, global digital market ecosystems, retail & e-commerce, HR workforce analytics, and enterprise data strategy — delivering advanced insights and production systems across complex global sectors."
+      question: "What is Huuboi and what does it do?",
+      answer: "Huuboi is a global multi-service travel ecosystem I founded and architected. It unifies flight tracking, hotel distribution, car rentals, travel insurance, and regional eSIM marketplaces into a single dashboard interface, with AI-powered budget planning and automated content generation. The platform runs across six continents and serves as a production-grade demonstration of my full-stack and data architecture capabilities."
     },
     {
-      question: "What tools does he use for data analysis?",
-      answer: "I work with Python, SQL Server, Excel, Tableau, Pandas, NumPy, and modern engineering tools like React and Next.js to construct responsive data architectures, analytical pipelines, and enterprise systems."
+      question: "What does a Data Scientist do on a daily basis?",
+      answer: "A Data Scientist designs and deploys machine learning models, performs statistical analysis on complex datasets, engineers features for predictive accuracy, conducts exploratory data analysis (EDA), and translates raw data into actionable business insights. They work across the full analytics lifecycle—from data collection and cleaning to model deployment and performance monitoring—to solve high-impact business problems."
     },
     {
-      question: "Is he available for remote data science roles?",
-      answer: "Yes! I am actively open to remote Data Scientist, Business Intelligence Analyst, Full-Stack Product Architect, and Analytics Consultant opportunities globally."
+      question: "What does a Data Analyst do on a daily basis?",
+      answer: "A Data Analyst focuses on querying, cleaning, and transforming raw data into structured formats for analysis. They build interactive dashboards and visualizations, generate performance reports, track KPIs, and identify trends that inform business decisions. Using tools like SQL, Excel, and Tableau, they bridge the gap between raw data and stakeholder comprehension through clear, actionable reporting."
+    },
+    {
+      question: "What does a Business Intelligence (BI) Analyst do on a daily basis?",
+      answer: "A BI Analyst translates business needs into technical data requirements, designing dashboards and reporting systems that monitor organizational performance. They integrate data from multiple sources, develop ETL pipelines, create data models, and deliver executive-level visualizations that enable leadership to make faster, data-informed strategic decisions. They ensure data accuracy, governance, and accessibility across the organization."
+    },
+    {
+      question: "What tools does Opeyemi Fatodu use for data and engineering?",
+      answer: "I work with a hybrid stack spanning data science and full-stack engineering: Python (Pandas, NumPy, ML), SQL Server, Excel, Tableau, Next.js, React, Supabase/PostgreSQL, and Vercel for cloud deployment. This allows me to build end-to-end solutions—from predictive models and BI dashboards to production-grade web applications."
+    },
+    {
+      question: "Is Opeyemi available for remote roles or consulting?",
+      answer: "Yes! I am actively open to remote Data Scientist, Business Intelligence Analyst, Full-Stack Product Architect, and Analytics Consultant opportunities globally. I'm also available for fractional CTO or technical advisory engagements for startups building data-intensive products."
     }
   ];
 
+  // ─── Render ───
   return (
     <>
       <Helmet>
@@ -189,32 +213,51 @@ export default function PortfolioPreview() {
         <meta property="og:title" content="Opeyemi Fatodu | Data Scientist & Business Intelligence Specialist" />
         <meta property="og:description" content="Explore advanced projects, predictive analytical systems, and software engineering portfolios created by Opeyemi Fatodu." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://my-portfolio-two-beta-69.vercel.app/" />
+        <meta property="og:url" content="https://yemifatodu.online" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Opeyemi Fatodu | Data Scientist" />
         <meta name="twitter:description" content="Machine Learning, Business Intelligence, Data Pipelines — portfolio and real-world system architecture blueprints." />
+        <link rel="canonical" href="https://yemifatodu.online" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-100 dark:from-slate-950 dark:to-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
         <main role="main">
 
-          {/* Banner Hero Viewport */}
+          {/* ═══ BANNER HERO ═══ */}
           <div className="relative w-full overflow-hidden" style={{ minHeight: "540px" }}>
-            <div className="absolute inset-0" style={{ backgroundImage: "url('/Yemi_Fatodu.jpg')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }} />
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0" 
+              style={{ 
+                backgroundImage: "url('/Yemi_Fatodu.jpg')", 
+                backgroundSize: "cover", 
+                backgroundPosition: "center", 
+                backgroundRepeat: "no-repeat" 
+              }} 
+            />
+            {/* Overlays */}
             <div className="absolute inset-0" style={{ background: "rgba(10,15,30,0.68)" }} />
             <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.75) 0%, transparent 60%, rgba(2,6,23,0.5) 100%)" }} />
             <div className="absolute bottom-0 left-0 right-0" style={{ height: "90px", background: "linear-gradient(to bottom, transparent, rgba(2,6,23,0.95))", pointerEvents: "none" }} />
 
+            {/* ─── Navbar ─── */}
             <div className="relative z-50 w-full border-b border-white/10 backdrop-blur-sm">
               <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
                 <span className="text-xl font-bold text-white tracking-tight">Yemi Fatodu</span>
-                <nav className="flex items-center space-x-6">
-                  <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" aria-label="Toggle theme">
+                
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center space-x-6">
+                  <button 
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
+                    aria-label="Toggle theme"
+                  >
                     {theme === 'dark' ? <Sun size={18} color="white" /> : <Moon size={18} color="white" />}
                   </button>
                   <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium">Home</a>
                   <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium">About</a>
                   <a href="#projects" className="text-white/80 hover:text-white transition text-sm font-medium">Projects</a>
+                  <a href="#skills" className="text-white/80 hover:text-white transition text-sm font-medium">Skills</a>
                   <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 font-semibold transition text-sm flex items-center gap-1">
                     Huuboi.com <span className="text-xs">↗</span>
                   </a>
@@ -232,33 +275,113 @@ export default function PortfolioPreview() {
                     </div>
                   </div>
                 </nav>
+
+                {/* Mobile Nav */}
+                <div className="flex items-center gap-3 md:hidden">
+                  <button 
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
+                    aria-label="Toggle theme"
+                  >
+                    {theme === 'dark' ? <Sun size={18} color="white" /> : <Moon size={18} color="white" />}
+                  </button>
+                  <button 
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+                    className="p-2 text-white/80 hover:text-white transition"
+                    aria-label="Toggle menu"
+                  >
+                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                  </button>
+                </div>
               </div>
+
+              {/* Mobile Dropdown */}
+              {mobileMenuOpen && (
+                <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-white/10 px-6 py-4 flex flex-col gap-3">
+                  <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Home</a>
+                  <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>About</a>
+                  <a href="#projects" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Projects</a>
+                  <a href="#skills" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Skills</a>
+                  <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-400 font-semibold text-sm py-1 flex items-center gap-1">
+                    Huuboi.com <span className="text-xs">↗</span>
+                  </a>
+                  <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
+                    <a href="mailto:yemifatodu@gmail.com" className="text-sm text-slate-300 hover:text-white transition">📧 Email</a>
+                    <a href="tel:+14092695122" className="text-sm text-slate-300 hover:text-white transition">📱 Mobile Phone</a>
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* ─── Hero Content ─── */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16">
-              <motion.h1 initial={reduceMotion ? false : { opacity: 0, y: 30 }} animate={reduceMotion ? false : { opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight" style={{ lineHeight: 1.1 }}>
+              <motion.h1
+                initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight"
+                style={{ lineHeight: 1.1 }}
+              >
                 Opeyemi Ebenezer <span className="text-indigo-400">Fatodu</span>
               </motion.h1>
-              <motion.h2 initial={reduceMotion ? false : { opacity: 0, y: 20 }} animate={reduceMotion ? false : { opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }} className="text-sm md:text-base font-medium mb-5 max-w-3xl leading-relaxed text-slate-300/90 tracking-wide">
+
+              <motion.h2
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25 }}
+                className="text-sm md:text-base font-medium mb-5 max-w-3xl leading-relaxed text-slate-300/90 tracking-wide"
+              >
                 Data Scientist &nbsp;|&nbsp; Business Intelligence Specialist &nbsp;|&nbsp; Full-Stack Builder &nbsp;|&nbsp; Founder of Huuboi
               </motion.h2>
-              <motion.div initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }} animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }} className="w-16 h-0.5 rounded-full mb-6 bg-gradient-to-r from-indigo-400 to-emerald-400" />
-              <div className="flex flex-wrap justify-center gap-2 mb-8">
+
+              <motion.div
+                initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
+                animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="w-16 h-0.5 rounded-full mb-6 bg-gradient-to-r from-indigo-400 to-emerald-400"
+              />
+
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-wrap justify-center gap-2 mb-8"
+              >
                 {["Open to Global Engineering Roles", "AI & Custom Data Pipelines", "E-Commerce & Digital Market Analytics"].map(tag => (
-                  <span key={tag} className="px-3 py-1 text-xs md:text-sm rounded-full bg-white/10 border border-white/20 text-slate-200 backdrop-blur-md">{tag}</span>
+                  <span key={tag} className="px-3 py-1 text-xs md:text-sm rounded-full bg-white/10 border border-white/20 text-slate-200 backdrop-blur-md">
+                    {tag}
+                  </span>
                 ))}
-              </div>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a href="#skills" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">View Capabilities</a>
-                <a href="#projects" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm">Explore Architecture</a>
-              </div>
+              </motion.div>
+
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="flex flex-wrap justify-center gap-3"
+              >
+                <a href="#skills" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">
+                  View Capabilities
+                </a>
+                <a href="#projects" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm">
+                  Explore Architecture
+                </a>
+                <a 
+                  href="/Yemi_Fatodu_CV.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm"
+                >
+                  View CV
+                </a>
+              </motion.div>
             </div>
           </div>
 
-          {/* Sticky Navigation */}
+          {/* ─── Sticky Nav ─── */}
           <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 sticky top-0 bg-white/95 dark:bg-slate-950/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 z-50 transition-colors">
             <h1 className="text-xl font-bold tracking-tight">Yemi Fatodu</h1>
-            <nav className="flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-6">
               <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent dark:border-slate-800 transition" aria-label="Toggle theme">
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
@@ -267,9 +390,12 @@ export default function PortfolioPreview() {
               <a href="#projects" className="hover:text-indigo-500 font-medium text-sm transition">Projects</a>
               <a href="#skills" className="hover:text-indigo-500 font-medium text-sm transition">Skills</a>
             </nav>
+            <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="md:hidden p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent dark:border-slate-800 transition" aria-label="Toggle theme">
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
           </header>
 
-          {/* About Section */}
+          {/* ─── About ─── */}
           <section id="about" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
             <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm">
@@ -282,7 +408,7 @@ export default function PortfolioPreview() {
             </Card>
           </section>
 
-          {/* Blog Section */}
+          {/* ─── Blog ─── */}
           <section id="blogs" className="max-w-5xl mx-auto py-12 px-6">
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Data Science Articles & Analytics Insights</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-8">I build and humanize technical content to clearly map operational intelligence, metric normalization, and deep machine learning strategy for the web.</p>
@@ -299,11 +425,10 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Projects Section */}
+          {/* ─── Projects ─── */}
           <section id="projects" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-2 tracking-tight">Featured Projects & Deployments</h2>
 
-            {/* Architectural Focus Callout */}
             <div className="mb-8 p-6 bg-indigo-50/50 dark:bg-indigo-950/20 border border-indigo-100 dark:border-indigo-900/50 rounded-2xl text-left">
               <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Architectural Focus</p>
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
@@ -352,15 +477,21 @@ export default function PortfolioPreview() {
                       </div>
 
                       <div className="grid grid-cols-3 gap-2 pt-2">
-                        <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent" onClick={() => window.open(project.blog, "_blank", "noopener,noreferrer")}>
-                          {isHuuboi ? "Live Portal" : "Blog Post"}
-                        </Button>
-                        <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent" onClick={() => window.open(project.dashboard, "_blank", "noopener,noreferrer")}>
-                          {isHuuboi ? "eSIM Module" : "Dashboard"}
-                        </Button>
-                        <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent" onClick={() => window.open(project.repo, "_blank", "noopener,noreferrer")}>
-                          {isHuuboi ? "Insurance Engine" : "Report Link"}
-                        </Button>
+                        <a href={project.blog} target="_blank" rel="noopener noreferrer" className="w-full">
+                          <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent">
+                            {isHuuboi ? "Live Portal" : "Blog Post"}
+                          </Button>
+                        </a>
+                        <a href={project.dashboard} target="_blank" rel="noopener noreferrer" className="w-full">
+                          <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent">
+                            {isHuuboi ? "eSIM Module" : "Dashboard"}
+                          </Button>
+                        </a>
+                        <a href={project.repo} target="_blank" rel="noopener noreferrer" className="w-full">
+                          <Button variant="outline" size="sm" className="w-full text-xs font-medium border-slate-200 dark:border-slate-800 bg-transparent">
+                            {isHuuboi ? "Insurance Engine" : "Report Link"}
+                          </Button>
+                        </a>
                       </div>
                     </CardContent>
                   </Card>
@@ -369,7 +500,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Categorized Skills Section */}
+          {/* ─── Skills ─── */}
           <section id="skills" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-2 tracking-tight">Core Capabilities Matrix</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-10 text-sm md:text-base">An engineering overview of systems proficiency, analytical methods, and product design domains built through deployment.</p>
@@ -402,7 +533,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Data Systems & Frameworks Tools Section */}
+          {/* ─── Tools ─── */}
           <section id="tools" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Data Systems & Frameworks</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -426,7 +557,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Experience Section */}
+          {/* ─── Experience ─── */}
           <section id="experience" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Professional Backing</h2>
             <div className="grid gap-6">
@@ -457,7 +588,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Certifications Section */}
+          {/* ─── Certifications ─── */}
           <section id="certifications" className="max-w-5xl mx-auto py-16 text-center px-6">
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Verified Credentials & Code</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto text-sm md:text-base">Review explicit programmatic code repositories, verified database credentials, and formal certifications across modern global platforms.</p>
@@ -471,7 +602,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Testimonials Section */}
+          {/* ─── Testimonials ─── */}
           <section id="testimonials" className="max-w-5xl mx-auto py-12 px-6">
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Testimonials</h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -496,7 +627,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* FAQ Section */}
+          {/* ─── FAQ ─── */}
           <section id="faq" className="max-w-5xl mx-auto py-12 px-6">
             <h2 className="text-3xl font-bold mb-8 tracking-tight">Frequently Asked Questions</h2>
             <div className="grid gap-4">
@@ -511,7 +642,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* Contact Layout */}
+          {/* ─── Contact ─── */}
           <section id="contact" className="max-w-5xl mx-auto py-20 text-center px-6">
             <h2 className="text-3xl font-bold mb-4 tracking-tight">Let's Build Together</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-10 text-sm md:text-base">Initiate a global deployment or project audit across any of these verified communication channels.</p>
@@ -535,8 +666,9 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
+          {/* ─── Footer ─── */}
           <footer className="text-center text-slate-400 dark:text-slate-500 text-xs py-8 border-t border-slate-100 dark:border-slate-900 max-w-5xl mx-auto px-6">
-            © 2026 Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist. All rights reserved.
+            © {new Date().getFullYear()} Opeyemi Ebenezer Fatodu — Data Scientist & Business Intelligence Specialist. All rights reserved.
           </footer>
 
         </main>
