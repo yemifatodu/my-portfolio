@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
-import { Github, Linkedin, Sun, Moon, Globe, Menu, X } from "lucide-react";
+import { Github, Linkedin, Sun, Moon, Globe, Menu, X, ChevronUp } from "lucide-react";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
@@ -13,6 +13,9 @@ export default function PortfolioPreview() {
   });
   
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [showScrollTop, setShowScrollTop] = React.useState(false);
+  const [expandedAbout, setExpandedAbout] = React.useState(false);
+  const [expandedSkills, setExpandedSkills] = React.useState({});
 
   // Apply theme and save to localStorage
   React.useEffect(() => {
@@ -20,7 +23,24 @@ export default function PortfolioPreview() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  // Scroll to top button visibility
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const reduceMotion = useReducedMotion();
+
+  // Toggle expanded state for a specific skill category
+  const toggleSkillExpand = (category) => {
+    setExpandedSkills(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
 
   // ─── Categorized Skills ───
   const categorizedSkills = [
@@ -223,36 +243,37 @@ export default function PortfolioPreview() {
       <div className="min-h-screen bg-gradient-to-b from-white to-slate-100 dark:from-slate-950 dark:to-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
         <main role="main">
 
-          {/* ═══ BANNER HERO ═══ */}
-          <div className="relative w-full overflow-hidden" style={{ minHeight: "540px" }}>
-            {/* Background Image */}
+          {/* ═══ BANNER HERO — Reduced height ═══ */}
+          <div className="relative w-full overflow-hidden" style={{ minHeight: "380px", maxHeight: "420px" }}>
+            {/* Background Image - Full page cover */}
             <div 
-              className="absolute inset-0" 
+              className="absolute inset-0 w-full h-full" 
               style={{ 
                 backgroundImage: "url('/Yemi_Fatodu.jpg')", 
                 backgroundSize: "cover", 
                 backgroundPosition: "center", 
-                backgroundRepeat: "no-repeat" 
+                backgroundRepeat: "no-repeat",
+                backgroundAttachment: "fixed"
               }} 
             />
             {/* Overlays */}
             <div className="absolute inset-0" style={{ background: "rgba(10,15,30,0.68)" }} />
             <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.75) 0%, transparent 60%, rgba(2,6,23,0.5) 100%)" }} />
-            <div className="absolute bottom-0 left-0 right-0" style={{ height: "90px", background: "linear-gradient(to bottom, transparent, rgba(2,6,23,0.95))", pointerEvents: "none" }} />
+            <div className="absolute bottom-0 left-0 right-0" style={{ height: "60px", background: "linear-gradient(to bottom, transparent, rgba(2,6,23,0.95))", pointerEvents: "none" }} />
 
-            {/* ─── Navbar ─── */}
+            {/* ─── Single Navbar ─── */}
             <div className="relative z-50 w-full border-b border-white/10 backdrop-blur-sm">
-              <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+              <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
                 <span className="text-xl font-bold text-white tracking-tight">Yemi Fatodu</span>
                 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center space-x-6">
+                <nav className="hidden md:flex items-center space-x-5">
                   <button 
                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
+                    className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
                     aria-label="Toggle theme"
                   >
-                    {theme === 'dark' ? <Sun size={18} color="white" /> : <Moon size={18} color="white" />}
+                    {theme === 'dark' ? <Sun size={16} color="white" /> : <Moon size={16} color="white" />}
                   </button>
                   <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium">Home</a>
                   <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium">About</a>
@@ -277,27 +298,27 @@ export default function PortfolioPreview() {
                 </nav>
 
                 {/* Mobile Nav */}
-                <div className="flex items-center gap-3 md:hidden">
+                <div className="flex items-center gap-2 md:hidden">
                   <button 
                     onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
+                    className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-200" 
                     aria-label="Toggle theme"
                   >
-                    {theme === 'dark' ? <Sun size={18} color="white" /> : <Moon size={18} color="white" />}
+                    {theme === 'dark' ? <Sun size={16} color="white" /> : <Moon size={16} color="white" />}
                   </button>
                   <button 
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-                    className="p-2 text-white/80 hover:text-white transition"
+                    className="p-1.5 text-white/80 hover:text-white transition"
                     aria-label="Toggle menu"
                   >
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                   </button>
                 </div>
               </div>
 
               {/* Mobile Dropdown */}
               {mobileMenuOpen && (
-                <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-white/10 px-6 py-4 flex flex-col gap-3">
+                <div className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-white/10 px-6 py-3 flex flex-col gap-2">
                   <a href="#" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Home</a>
                   <a href="#about" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>About</a>
                   <a href="#projects" className="text-white/80 hover:text-white transition text-sm font-medium py-1" onClick={() => setMobileMenuOpen(false)}>Projects</a>
@@ -314,22 +335,22 @@ export default function PortfolioPreview() {
             </div>
 
             {/* ─── Hero Content ─── */}
-            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-16">
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-4">
               <motion.h1
-                initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 tracking-tight"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight"
                 style={{ lineHeight: 1.1 }}
               >
                 Opeyemi Ebenezer <span className="text-indigo-400">Fatodu</span>
               </motion.h1>
 
               <motion.h2
-                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 15 }}
                 animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25 }}
-                className="text-sm md:text-base font-medium mb-5 max-w-3xl leading-relaxed text-slate-300/90 tracking-wide"
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-xs md:text-sm font-medium mb-3 max-w-3xl leading-relaxed text-slate-300/90 tracking-wide"
               >
                 Data Scientist &nbsp;|&nbsp; Business Intelligence Specialist &nbsp;|&nbsp; Full-Stack Builder &nbsp;|&nbsp; Founder of Huuboi
               </motion.h2>
@@ -337,40 +358,40 @@ export default function PortfolioPreview() {
               <motion.div
                 initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
                 animate={reduceMotion ? false : { scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="w-16 h-0.5 rounded-full mb-6 bg-gradient-to-r from-indigo-400 to-emerald-400"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="w-12 h-0.5 rounded-full mb-3 bg-gradient-to-r from-indigo-400 to-emerald-400"
               />
 
               <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                 animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-                className="flex flex-wrap justify-center gap-2 mb-8"
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="flex flex-wrap justify-center gap-1.5 mb-3"
               >
                 {["Open to Global Engineering Roles", "AI & Custom Data Pipelines", "E-Commerce & Digital Market Analytics"].map(tag => (
-                  <span key={tag} className="px-3 py-1 text-xs md:text-sm rounded-full bg-white/10 border border-white/20 text-slate-200 backdrop-blur-md">
+                  <span key={tag} className="px-2.5 py-0.5 text-[10px] md:text-xs rounded-full bg-white/10 border border-white/20 text-slate-200 backdrop-blur-md">
                     {tag}
                   </span>
                 ))}
               </motion.div>
 
               <motion.div
-                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                 animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.55 }}
-                className="flex flex-wrap justify-center gap-3"
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex flex-wrap justify-center gap-2"
               >
-                <a href="#skills" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">
+                <a href="#skills" className="px-4 py-1.5 rounded-xl text-xs font-semibold text-white bg-indigo-600 shadow-lg shadow-indigo-600/30 hover:bg-indigo-500 hover:-translate-y-0.5 transition duration-200">
                   View Capabilities
                 </a>
-                <a href="#projects" className="px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm">
+                <a href="#projects" className="px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm">
                   Explore Architecture
                 </a>
                 <a 
                   href="/Yemi_Fatodu_CV.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm"
+                  className="px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-200 bg-white/5 border border-white/15 hover:bg-white/10 hover:-translate-y-0.5 transition duration-200 backdrop-blur-sm"
                 >
                   View CV
                 </a>
@@ -378,39 +399,94 @@ export default function PortfolioPreview() {
             </div>
           </div>
 
-          {/* ─── Sticky Nav ─── */}
-          <header className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6 sticky top-0 bg-white/95 dark:bg-slate-950/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 z-50 transition-colors">
-            <h1 className="text-xl font-bold tracking-tight">Yemi Fatodu</h1>
-            <nav className="hidden md:flex items-center space-x-6">
-              <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent dark:border-slate-800 transition" aria-label="Toggle theme">
-                {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-              <a href="#" className="hover:text-indigo-500 font-medium text-sm transition">Home</a>
-              <a href="#about" className="hover:text-indigo-500 font-medium text-sm transition">About</a>
-              <a href="#projects" className="hover:text-indigo-500 font-medium text-sm transition">Projects</a>
-              <a href="#skills" className="hover:text-indigo-500 font-medium text-sm transition">Skills</a>
-            </nav>
-            <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="md:hidden p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 border border-transparent dark:border-slate-800 transition" aria-label="Toggle theme">
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          </header>
-
-          {/* ─── About ─── */}
+          {/* ─── About Me ─── */}
           <section id="about" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-6 tracking-tight">About Me</h2>
             <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm">
               <CardContent className="p-6 md:p-8 text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
-                <img src="/profile.jpg" alt="Opeyemi Ebenezer Fatodu" loading="lazy" decoding="async" className="w-32 h-32 md:w-36 md:h-36 mx-auto md:float-left md:mr-8 md:mb-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 object-cover shadow-sm" />
+                <img src="/profile.jpg" alt="Opeyemi Ebenezer Fatodu" loading="lazy" decoding="async" className="w-40 h-40 md:w-44 md:h-44 mx-auto md:float-left md:mr-8 md:mb-4 rounded-2xl border-2 border-slate-200 dark:border-slate-800 object-cover shadow-sm" style={{ transform: 'scale(1.2)' }} />
+                
                 <p>I am a results-oriented Data Scientist and Business Intelligence Specialist focused on transforming highly fragmented datasets into integrated analytics environments, machine learning pipelines, and active software platforms. I operate at the intersection of data validation, descriptive analysis, and automated application architecture to optimize enterprise growth metrics across consumer services, retail environments, fintech networks, and healthcare sectors.</p>
+                
                 <p>My workflow covers advanced SQL architecture, targeted data extraction, predictive exploratory data analysis (EDA), and automated content generation engines. Combining classic analytics stacks with functional front-end engines, I build applications where data models do not just sit passively in reports, but actively control system experiences.</p>
+                
                 <p>As the founder of <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-500 dark:text-indigo-400 font-semibold hover:underline">Huuboi</a>, I constructed a comprehensive framework coordinating international booking systems, localized carrier modules, and embedded insurance processing layouts. I turn complex data patterns into dynamic, accessible solutions designed for deep operational impact.</p>
+
+                {/* Expanded Huuboi Skills Section */}
+                <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+                  <button 
+                    onClick={() => setExpandedAbout(!expandedAbout)}
+                    className="text-indigo-500 dark:text-indigo-400 font-semibold hover:underline text-sm flex items-center gap-2"
+                  >
+                    {expandedAbout ? '▼ Hide' : '▶ View'} Huuboi Skills Breakdown
+                  </button>
+                  
+                  {expandedAbout && (
+                    <div className="mt-4 space-y-4 text-sm">
+                      <p className="font-semibold text-slate-800 dark:text-slate-200">Based on my architectural design and development of <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-500">Huuboi.com</a>, I have actively demonstrated a sophisticated, multi-disciplinary toolkit. Running a global travel platform solo requires moving far beyond passive data analysis—I execute as a full-stack engineer, data architect, and systems specialist.</p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-bold text-indigo-500">Data & Intelligence</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Data-Driven Decision Making:</strong> Architecting a multi-continental travel hub requires analyzing real-time distribution data, pricing corridors, and travel demand.</li>
+                            <li><strong>KPI Development & Monitoring:</strong> Integrating financial and engagement layers to track user booking behavior and retention metrics.</li>
+                            <li><strong>Data Analytics & Visualization:</strong> Building analytical layouts and state management strategies to track platform usage data.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-indigo-500">AI & Process Automation</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Process & Workflow Automation:</strong> Automated content generation pipeline linking structured scripts with spreadsheet state control.</li>
+                            <li><strong>AI Product Development:</strong> Integration of AI-powered travel budget planner for real-time cost management.</li>
+                            <li><strong>Prompt Engineering:</strong> Fine-tuning prompts to generate original, non-plagiarized, SEO-optimized content at scale.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-indigo-500">Software Engineering & Full-Stack</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Full-Stack Web Development:</strong> Using Next.js and React for a modern, responsive user interface.</li>
+                            <li><strong>API Design & Integration:</strong> Orchestrating backend layers pulling live data from multiple global sources.</li>
+                            <li><strong>Database Design:</strong> Integrating relational architectures to maintain state controls and multi-service hooks.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-indigo-500">Cloud & Infrastructure</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Modern Web Hosting:</strong> Pushing staging branches and production deployments through cloud platforms.</li>
+                            <li><strong>Supabase:</strong> Database management, secure auth token handling, and backend storage.</li>
+                            <li><strong>Vercel:</strong> High-performance edge routing, serverless function processing, and UI hosting.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-indigo-500">Travel Technology</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Travel Platform Development:</strong> Creating unified consumer experience across six continents.</li>
+                            <li><strong>Travel Marketplace Architecture:</strong> Embedding flight engines, hotels, car rentals, and insurance lookup matrices.</li>
+                            <li><strong>Digital Travel Services Integration:</strong> Embedded frameworks for regional eSIM marketplace and cross-border insurance.</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-indigo-500">Product Management & Leadership</h4>
+                          <ul className="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
+                            <li><strong>Startup Leadership:</strong> Standing up a global travel platform independently.</li>
+                            <li><strong>Platform Monetization:</strong> Implementing multiple yield vectors including transaction fees, affiliate commissions, and direct sales.</li>
+                            <li><strong>MVP Development:</strong> Dissecting complex logistics into simple, immediate platform features.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      
+                      <p className="font-semibold text-slate-800 dark:text-slate-200 mt-4">By demonstrating these exact components through <a href="https://huuboi.com" target="_blank" rel="noopener noreferrer" className="text-indigo-500">Huuboi.com</a>, I prove to global companies that I am not just a data scientist who analyzes clean spreadsheets in isolation. I am an <span className="text-indigo-500">advanced systems builder</span> who understands how data structures, automated code execution, and real-world consumer software intersect to generate real enterprise value.</p>
+                    </div>
+                  )}
+                </div>
               </CardContent>
             </Card>
           </section>
 
-          {/* ─── Blog ─── */}
-          <section id="blogs" className="max-w-5xl mx-auto py-12 px-6">
-            <h2 className="text-3xl font-bold mb-4 tracking-tight">Data Science Articles & Analytics Insights</h2>
+          {/* ─── Articles / Research ─── */}
+          <section id="articles" className="max-w-5xl mx-auto py-12 px-6">
+            <h2 className="text-3xl font-bold mb-4 tracking-tight">Articles & Research</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-8">I build and humanize technical content to clearly map operational intelligence, metric normalization, and deep machine learning strategy for the web.</p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
@@ -500,7 +576,7 @@ export default function PortfolioPreview() {
             </div>
           </section>
 
-          {/* ─── Skills ─── */}
+          {/* ─── Skills ─── 2 columns desktop, 1 column mobile */}
           <section id="skills" className="max-w-5xl mx-auto py-16 px-6">
             <h2 className="text-3xl font-bold mb-2 tracking-tight">Core Capabilities Matrix</h2>
             <p className="text-slate-500 dark:text-slate-400 mb-10 text-sm md:text-base">An engineering overview of systems proficiency, analytical methods, and product design domains built through deployment.</p>
@@ -509,7 +585,9 @@ export default function PortfolioPreview() {
               {categorizedSkills.map((domain) => (
                 <div key={domain.category} className="space-y-4">
                   <h3 className="text-lg font-bold text-indigo-600 dark:text-indigo-400 tracking-tight border-b border-slate-100 dark:border-slate-900 pb-2">{domain.category}</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  
+                  {/* 2 columns desktop, 1 column mobile */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {domain.items.map(skill => (
                       <div key={skill.name} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-5 shadow-sm">
                         <div className="flex justify-between mb-2 items-center">
@@ -673,6 +751,17 @@ export default function PortfolioPreview() {
 
         </main>
       </div>
+
+      {/* ─── Back to Top Button ─── */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-500 hover:scale-105 transition-all duration-200"
+          aria-label="Back to top"
+        >
+          <ChevronUp size={22} />
+        </button>
+      )}
     </>
   );
 }
