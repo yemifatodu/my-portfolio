@@ -1,3 +1,6 @@
+import { Routes, Route, Link } from "react-router-dom";
+import { projectData } from "./data/projects";
+import ProjectPage from "./pages/ProjectPage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
@@ -697,3 +700,5 @@ export default function PortfolioPreview() {
     </>
   );
 }
+
+
