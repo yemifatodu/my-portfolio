@@ -14,6 +14,19 @@ export const projectData = [
     isHuuboi: true
   },
   {
+    slug: "churniq",
+    title: "ChurnIQ — AI-Powered Bank Customer Churn Intelligence",
+    description: "A deployed Random Forest platform predicting customer attrition risk in real time. Achieves 86.80% accuracy and 0.864 ROC-AUC, with full transparency into false negatives, feature importance, and class imbalance trade-offs — not just a notebook, but a live, explainable decision-support tool for retention teams.",
+    method: "Python • Scikit-learn • Random Forest • KMeans Segmentation • Streamlit • Feature Engineering • ROC-AUC & Precision-Recall Evaluation • Model Explainability",
+    impact: "86.80% accuracy, 0.864 ROC-AUC — identified Age and NumOfProducts as top churn drivers, surfacing a nonlinear relationship linear correlation missed entirely",
+    role: "Lead Data Scientist & Full-Stack ML Engineer",
+    tech: ["Python", "Scikit-learn", "Streamlit", "Random Forest"],
+    featured: true,
+    blog: "https://yemifatodu-bank-churn-predictor.streamlit.app",
+    dashboard: "https://yemifatodu-bank-churn-predictor.streamlit.app",
+    repo: "https://github.com/yemifatodu/bank-churn-predictor"
+  },
+  {
     slug: "diabetes-prediction",
     title: "Diabetes Prediction Model Using Machine Learning in Python",
     description: "This healthcare analytics project involved developing a supervised machine learning model to predict diabetes risk using logistic regression and exploratory data analysis (EDA). Using Python, Pandas, NumPy and statistical modeling techniques, I engineered features and optimized predictive accuracy by 18%. The model identified glucose levels, BMI and age as primary risk indicators, enabling improved early-detection strategies.",

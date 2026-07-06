@@ -1,6 +1,7 @@
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { projectData } from "./data/projects";
 import ProjectPage from "./pages/ProjectPage";
+import ChurnIQPage from "./pages/ChurnIQPage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
@@ -69,6 +70,7 @@ export default function PortfolioPreview() {
 
   return (
     <Routes>
+      <Route path="/projects/churniq" element={<ChurnIQPage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/resume" element={<Navigate to="/Yemi_Fatodu_CV.pdf" replace />} />
       <Route path="*" element={<>
@@ -137,9 +139,9 @@ export default function PortfolioPreview() {
                         <Mail size={16} className="text-indigo-500" />
                         <span>hello@yemifatodu.online</span>
                       </a>
-                      <a href="tel:+14092695122" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition border-t border-slate-100 dark:border-slate-800">
+                      <a href="tel:+2347033736377" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition border-t border-slate-100 dark:border-slate-800">
                         <Phone size={16} className="text-indigo-500" />
-                        <span>+1 (409) 269-5122</span>
+                        <span>+234 703 373 6377</span>
                       </a>
                     </div>
                   </div>
@@ -180,7 +182,7 @@ export default function PortfolioPreview() {
                     <a href="mailto:hello@yemifatodu.online" className="text-sm hover:text-indigo-500 transition flex items-center gap-2">
                       <Mail size={16} /> Email
                     </a>
-                    <a href="tel:+14092695122" className="text-sm hover:text-indigo-500 transition flex items-center gap-2">
+                    <a href="tel:+2347033736377" className="text-sm hover:text-indigo-500 transition flex items-center gap-2">
                       <Phone size={16} /> Phone
                     </a>
                   </div>
@@ -551,7 +553,7 @@ export default function PortfolioPreview() {
                 <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl shadow-sm">
                   <CardContent className="p-6 md:p-8">
                     <span className="text-xs font-bold text-indigo-500 uppercase tracking-wider">Corporate Internship</span>
-                    <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-1">Data Scientist Intern – MeriSkill</h3>
+                    <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 mt-1">Data Scientist Intern – Remote Job</h3>
                     <p className="text-slate-400 dark:text-slate-500 text-sm font-medium">Remote Infrastructure • 2024</p>
                     <p className="text-slate-500 dark:text-slate-400 mt-3 text-sm leading-relaxed">Developed predictive analytics models and performed statistical analysis on healthcare and retail business datasets. Built targeted data workflows, isolated regression feature factors, and deployed live analytical monitors to trace cross-regional KPI vectors.</p>
                   </CardContent>
