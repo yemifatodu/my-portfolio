@@ -27,6 +27,19 @@ export const projectData = [
     repo: "https://github.com/yemifatodu/bank-churn-predictor"
   },
   {
+    slug: "glucoseiq",
+    title: "GlucoseIQ — AI-Powered Diabetes Risk Assessment",
+    description: "A deployed dual-model (Random Forest + XGBoost) diabetes screening platform. Achieves 88.31% accuracy and 0.947 ROC-AUC, with transparent model comparison against a logistic regression baseline and full evaluation honesty around recall trade-offs in a health screening context.",
+    method: "Python • Scikit-learn • XGBoost • Random Forest • Streamlit • Group-Median Imputation • Model Comparison • Clinical Feature Analysis",
+    impact: "88.31% accuracy, 0.947 ROC-AUC — selected XGBoost over Random Forest and Logistic Regression based on recall performance, the priority metric for health screening",
+    role: "Lead Data Scientist & Full-Stack ML Engineer",
+    tech: ["Python", "Scikit-learn", "XGBoost", "Streamlit"],
+    featured: true,
+    blog: "https://yemifatodu-glucoseiq.streamlit.app",
+    dashboard: "https://yemifatodu-glucoseiq.streamlit.app",
+    repo: "https://github.com/yemifatodu/glucoseiq"
+  },
+  {
     slug: "diabetes-prediction",
     title: "Diabetes Prediction Model Using Machine Learning in Python",
     description: "This healthcare analytics project involved developing a supervised machine learning model to predict diabetes risk using logistic regression and exploratory data analysis (EDA). Using Python, Pandas, NumPy and statistical modeling techniques, I engineered features and optimized predictive accuracy by 18%. The model identified glucose levels, BMI and age as primary risk indicators, enabling improved early-detection strategies.",
@@ -105,3 +118,4 @@ export const projectData = [
     repo: "https://github.com/yemifatodu/HR_Analysis_meriSkill_project_Internship"
   }
 ];
+
