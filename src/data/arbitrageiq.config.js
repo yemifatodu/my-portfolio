@@ -7,9 +7,9 @@ const IMG = "/projects/arbitrageiq"; // put all images + PDFs in /public/project
 export const arbitrageiqConfig = {
   theme: {
     primary: "#0B0E11",
-    secondary: "#13161C",
-    accent: "#F0B90B",
-    bg: "#0B0E11",
+    secondary: "#525761",
+    accent: "#f4c50a",
+    bg: "#043361",
     displayFont: "'IBM Plex Sans', sans-serif",
     bodyFont: "'IBM Plex Mono', monospace",
   },

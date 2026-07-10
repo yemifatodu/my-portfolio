@@ -3,6 +3,7 @@ import { projectData } from "./data/projects";
 import ProjectPage from "./pages/ProjectPage";
 import ChurnIQPage from "./pages/ChurnIQPage";
 import GlucoseIQPage from "./pages/GlucoseIQPage";
+import ArbitrageIQPage from "./pages/ArbitrageIQPage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
@@ -73,6 +74,7 @@ export default function PortfolioPreview() {
     <Routes>
       <Route path="/projects/churniq" element={<ChurnIQPage />} />
       <Route path="/projects/glucoseiq" element={<GlucoseIQPage />} />
+      <Route path="/projects/arbitrageiq" element={<ArbitrageIQPage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/resume" element={<Navigate to="/Yemi_Fatodu_CV.pdf" replace />} />
       <Route path="*" element={<>
@@ -660,4 +662,3 @@ export default function PortfolioPreview() {
     </Routes>
   );
 }
-

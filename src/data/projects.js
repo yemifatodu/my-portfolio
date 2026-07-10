@@ -1,3 +1,5 @@
+import { arbitrageiqConfig } from "./arbitrageiq.config";
+
 export const projectData = [
   {
     slug: "huuboi",
@@ -38,6 +40,19 @@ export const projectData = [
     blog: "https://yemifatodu-glucoseiq.streamlit.app",
     dashboard: "https://yemifatodu-glucoseiq.streamlit.app",
     repo: "https://github.com/yemifatodu/glucoseiq"
+  },
+  {
+    slug: "arbitrageiq",
+    title: "ArbitrageIQ — Real-Time Crypto Arbitrage Trading Terminal",
+    description: "A production-grade async scanning system monitoring 5 exchanges and 30 symbols, calculating true net profit after trading and withdrawal fees. Delivers real-time Telegram alerts and features a live Streamlit terminal with full historical analytics.",
+    method: "Python • Asyncio • CCXT • Streamlit • SQLite • Telegram Bot API • Real-Time Data Engineering • Fee-Adjusted Profit Calculation",
+    impact: "150ms async scan time across 5 exchanges — transparently calculates true net profit after fees, revealing 83% of apparent arbitrage opportunities are unprofitable",
+    role: "Lead Data Engineer & Full-Stack Developer",
+    tech: ["Python", "Asyncio", "CCXT", "Streamlit", "SQLite", "Telegram API"],
+    featured: true,
+    blog: "https://yemifatodu-arbitrageiq.streamlit.app",
+    dashboard: "https://yemifatodu-arbitrage-iq.streamlit.app/",
+    repo: "https://github.com/yemifatodu/arbitrage-iq"
   },
   {
     slug: "diabetes-prediction",
