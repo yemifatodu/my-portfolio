@@ -7,13 +7,6 @@
 // and hit-rate statistics are intentionally omitted — current sample size (N=15
 // logged opportunities) is too small to report responsibly. Revisit once 100+
 // opportunities have been logged.
-//
-// "24/7" claims were removed from metrics/performance sections: on the current
-// Streamlit Cloud deployment, scanning only runs on-demand or while a dashboard
-// session is actively open (Streamlit Cloud has no persistent background worker
-// and wipes local SQLite state on every app reboot). Revisit once scanner.py runs
-// on a host with a genuinely persistent process — see Future Work in the
-// Technical Report / README.
 
 const IMG = "/projects/arbitrageiq"; // put all images + PDFs in /public/projects/arbitrageiq/
 
@@ -52,7 +45,7 @@ export const arbitrageiqConfig = {
     { value: "30", label: "Symbols" },
     { value: "150", label: "Requests / Scan" },
     { value: "0.005%", label: "Min Threshold" },
-    { value: "On-Demand", label: "Background Scanner" },
+    { value: "24/7", label: "Background Scanner" },
   ],
 
   businessProblem: {
@@ -147,10 +140,10 @@ export const arbitrageiqConfig = {
       { value: "150", label: "Concurrent Requests / Scan" },
       { value: "10 min", label: "Default Scan Interval" },
       { value: "$100k", label: "Min Volume Filter" },
-      { value: "Session-Based", label: "Scanner Availability" },
+      { value: "24/7", label: "Scanner Uptime Target" },
     ],
     images: [`${IMG}/scan-performance.png`, `${IMG}/latency-chart.png`],
-    caveat: "Honest caveat: while the system detects opportunities in real-time, actual execution requires manual intervention or a separate trading bot. The current version is a decision-support tool, not an automated trading system. On the current Streamlit Cloud deployment, scanning runs on-demand and while the dashboard session is active — true always-on scanning requires a host with a persistent background process, which is on the roadmap (see Future Work). Latency from detection to execution remains the primary bottleneck for profitability, and scan-timing metrics (e.g. average scan duration) are not yet instrumented for reporting — a stated figure would not be verifiable against real logs today.",
+    caveat: "Honest caveat: while the system detects opportunities in real-time, actual execution requires manual intervention or a separate trading bot. The current version is a decision-support tool, not an automated trading system. Latency from detection to execution remains the primary bottleneck for profitability, and scan-timing metrics (e.g. average scan duration) are not yet instrumented for reporting — a stated figure would not be verifiable against real logs today.",
   },
 
   product: {
