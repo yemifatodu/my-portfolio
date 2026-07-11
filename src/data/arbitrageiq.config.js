@@ -7,6 +7,13 @@
 // and hit-rate statistics are intentionally omitted — current sample size (N=15
 // logged opportunities) is too small to report responsibly. Revisit once 100+
 // opportunities have been logged.
+//
+// "24/7" claims were removed from metrics/performance sections: on the current
+// Streamlit Cloud deployment, scanning only runs on-demand or while a dashboard
+// session is actively open (Streamlit Cloud has no persistent background worker
+// and wipes local SQLite state on every app reboot). Revisit once scanner.py runs
+// on a host with a genuinely persistent process — see Future Work in the
+// Technical Report / README.
 
 const IMG = "/projects/arbitrageiq"; // put all images + PDFs in /public/projects/arbitrageiq/
 
@@ -14,10 +21,18 @@ export const arbitrageiqConfig = {
   theme: {
     primary: "#0B0E11",
     secondary: "#525761",
-    accent: "#f4c50a",
-    bg: "#043361",
+    accent: "#F0B90B",
+    bg: "#0B0E11",
     displayFont: "'IBM Plex Sans', sans-serif",
     bodyFont: "'IBM Plex Mono', monospace",
+    // Dark-surface fields — match the live Streamlit terminal's Binance-style palette
+    surface: "#13161C",
+    surfaceBorder: "#1E2329",
+    textBody: "#848E9C",
+    textMuted: "#5E6673",
+    headingText: "#EAECEF",
+    panelText: "#EAECEF",
+    panelSubtext: "#5E6673",
   },
 
   meta: {
@@ -44,8 +59,8 @@ export const arbitrageiqConfig = {
     { value: "5", label: "Exchanges" },
     { value: "30", label: "Symbols" },
     { value: "150", label: "Requests / Scan" },
-    { value: "0.005%", label: "Min Threshold" },
-    { value: "24/7", label: "Background Scanner" },
+    { value: "0.15%", label: "Min Threshold" },
+    { value: "10 min", label: "Scan Interval" },
   ],
 
   businessProblem: {
@@ -131,30 +146,39 @@ export const arbitrageiqConfig = {
   },
 
   importance: {
+    eyebrow: "09 · Signal Analysis",
+    heading: "What actually drives an alert",
     image: `${IMG}/exchange-frequency.png`,
     text: "Early data shows opportunities distributed across all five exchanges on both the buy and sell side, without a single exchange yet showing a statistically reliable dominant pattern. This section will be substantively expanded once a larger dataset (target: 100+ logged opportunities) is available — publishing a specific percentage before then would overstate what a 15-opportunity sample can actually support.",
   },
 
   performance: {
+    eyebrow: "10 · System Performance",
+    heading: "Honest evaluation",
     stats: [
       { value: "150", label: "Concurrent Requests / Scan" },
       { value: "10 min", label: "Default Scan Interval" },
       { value: "$100k", label: "Min Volume Filter" },
-      { value: "24/7", label: "Scanner Uptime Target" },
+      { value: "Session-Based", label: "Scanner Availability" },
     ],
     images: [`${IMG}/scan-performance.png`, `${IMG}/latency-chart.png`],
-    caveat: "Honest caveat: while the system detects opportunities in real-time, actual execution requires manual intervention or a separate trading bot. The current version is a decision-support tool, not an automated trading system. Latency from detection to execution remains the primary bottleneck for profitability, and scan-timing metrics (e.g. average scan duration) are not yet instrumented for reporting — a stated figure would not be verifiable against real logs today.",
+    caveat: "Honest caveat: while the system detects opportunities in real-time, actual execution requires manual intervention or a separate trading bot. The current version is a decision-support tool, not an automated trading system. On the current Streamlit Cloud deployment, scanning runs on-demand and while the dashboard session is active — true always-on scanning requires a host with a persistent background process, which is on the roadmap (see Future Work). Latency from detection to execution remains the primary bottleneck for profitability, and scan-timing metrics (e.g. average scan duration) are not yet instrumented for reporting — a stated figure would not be verifiable against real logs today.",
   },
 
   product: {
     title: "See it in action — live terminal interface",
     intro: "The Streamlit dashboard provides real-time visibility into market inefficiencies — updated every 60 seconds with auto-refresh.",
+    // no `subtitle` — the ML-project "same model, different customer" line doesn't apply here
     cases: [
       { label: "📊 Dashboard — System overview with live stats", image: `${IMG}/dashboard-view.png`, color: "#F0B90B" },
       { label: "⚡ Opportunities — Filterable 24h history", image: `${IMG}/opportunities-table.png`, color: "#0ECB81" },
     ],
     insight: "The terminal shows key metrics at a glance: active exchanges (5 online), symbols tracked (30), last 24h opportunities, best profit found, and average profit. The watchlist allows dynamic symbol selection, and the Telegram CTA drives mobile alert signups.",
+    formLabel: "Control Panel",
+    formAlt: "Scanner control panel — threshold, interval, and watchlist settings",
     formImage: `${IMG}/control-panel.png`,
+    actionLabel: "Live Alert",
+    actionAlt: "Real Telegram alert showing a detected opportunity",
     actionImage: `${IMG}/telegram-alert.png`,
   },
 
