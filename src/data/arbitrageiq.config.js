@@ -103,13 +103,10 @@ export const arbitrageiqConfig = {
       { value: "$100k", label: "Min Volume Filter" },
     ],
     note: "Data sourced via CCXT library from Binance, KuCoin, Bybit, OKX, and Gate.io. Filtered to a confirmed-tradeable symbol whitelist to avoid bad pair errors. Minimum volume threshold of $100k USD ensures liquidity and prevents slippage on execution.",
-    image: `${IMG}/exchange-coverage.png`,
   },
 
-  eda: {
-    text: "Initial analysis revealed significant geographic constraints — Kraken and Coinbase block Nigerian IPs, requiring exchange filtering. The system was designed around this constraint from the start rather than treating it as an edge case.",
-    image: `${IMG}/volume-distribution.png`,
-  },
+  // no `eda` block — this project has no EDA/feature-distribution charts;
+  // the ProjectTemplate skips the entire section when eda is omitted
 
   exploratory: {
     title: "Where arbitrage opportunities actually exist",
@@ -119,12 +116,10 @@ export const arbitrageiqConfig = {
       { title: "Exchange Coverage Gap (Caught & Fixed)", desc: "An audit found OKX and Gate were missing from the fee lookup table, silently defaulting to Binance's fee rate. Corrected with researched placeholder rates, flagged for account-tier verification." },
       { title: "Sample Size", desc: "Exchange-frequency patterns (which exchange tends to be cheapest) are not yet reported — current data (15 logged opportunities) is too small to support a reliable claim." },
     ],
-    image: `${IMG}/spread-analysis.png`,
   },
 
   correlation: {
     title: "Where naive arbitrage fails",
-    image: `${IMG}/fee-impact-chart.png`,
     discovery: {
       from: "0.25%",
       fromLabel: "Gross spread (before fees)",
@@ -141,14 +136,12 @@ export const arbitrageiqConfig = {
       { value: "Medium (0.1–0.5%)", label: "27% of logged opportunities" },
       { value: "Low (<0.1%)", label: "53% of logged opportunities" },
     ],
-    images: [`${IMG}/profit-distribution.png`, `${IMG}/opportunity-timeline.png`],
     note: "Based on the first 15 logged opportunities (~15-hour observation window). This is an early snapshot, not a statistically stable pattern — will be updated as more history accumulates.",
   },
 
   importance: {
     eyebrow: "09 · Signal Analysis",
     heading: "What actually drives an alert",
-    image: `${IMG}/exchange-frequency.png`,
     text: "Early data shows opportunities distributed across all five exchanges on both the buy and sell side, without a single exchange yet showing a statistically reliable dominant pattern. This section will be substantively expanded once a larger dataset (target: 100+ logged opportunities) is available — publishing a specific percentage before then would overstate what a 15-opportunity sample can actually support.",
   },
 
@@ -161,7 +154,6 @@ export const arbitrageiqConfig = {
       { value: "$100k", label: "Min Volume Filter" },
       { value: "Session-Based", label: "Scanner Availability" },
     ],
-    images: [`${IMG}/scan-performance.png`, `${IMG}/latency-chart.png`],
     caveat: "Honest caveat: while the system detects opportunities in real-time, actual execution requires manual intervention or a separate trading bot. The current version is a decision-support tool, not an automated trading system. On the current Streamlit Cloud deployment, scanning runs on-demand and while the dashboard session is active — true always-on scanning requires a host with a persistent background process, which is on the roadmap (see Future Work). Latency from detection to execution remains the primary bottleneck for profitability, and scan-timing metrics (e.g. average scan duration) are not yet instrumented for reporting — a stated figure would not be verifiable against real logs today.",
   },
 

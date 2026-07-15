@@ -7,35 +7,17 @@ import {
   CheckCircle2, AlertTriangle, ArrowRight
 } from "lucide-react";
 
-// Maps icon name strings (used in project config files) to actual components,
-// so config files can stay plain data without importing JSX.
 const ICON_MAP = { ExternalLink, Github, FileText, Presentation };
 
 /**
  * ProjectTemplate — shared shell for every flagship project page.
- * Each project supplies a config object (see churniq.config.js for the shape)
- * containing its own theme colors, copy, metrics, and image paths.
  *
- * THEME SURFACE FIELDS (all optional — fall back to the original light/white
- * styling so existing configs like churniq/glucoseiq render unchanged):
- *   theme.surface        card background            (default "#ffffff")
- *   theme.surfaceBorder   card border                (default "#e2e8f0")
- *   theme.textBody        paragraph/body text        (default "#475569")
- *   theme.textMuted       small/eyebrow/label text   (default "#94a3b8")
- *   theme.headingText     H1/H2 heading color         (default theme.primary)
- *   theme.panelText       text on theme.primary panels (default "#e2e8f0")
- *   theme.panelSubtext    secondary text on those panels (default "#94a3b8")
- *
- * COPY OVERRIDE FIELDS (all optional — default to the original ML-project copy):
- *   importance.eyebrow / importance.heading
- *   performance.eyebrow / performance.heading
- *   product.subtitle (omit entirely if not supplied — don't default to ML copy)
- *   product.formLabel / product.formAlt
- *   product.actionLabel / product.actionAlt
- *
- * Usage:
- *   import { churniqConfig } from "../data/projects/churniq.config";
- *   <ProjectTemplate project={churniqConfig} />
+ * ALL IMAGE FIELDS ARE OPTIONAL. Any section image (dataset.image, eda.image,
+ * exploratory.image, correlation.image, segmentation.images, importance.image,
+ * performance.images, product.formImage, product.actionImage) is simply
+ * skipped if omitted from a project's config — no broken-image icon, no gap.
+ * Projects that don't fit the ML-analysis shape can leave those fields out
+ * entirely rather than pointing at a placeholder file that doesn't exist.
  */
 
 function Section({ id, eyebrow, title, children, className = "", theme, colors }) {
@@ -132,9 +114,6 @@ export default function ProjectTemplate({ project }) {
           dataset, eda, exploratory, correlation, segmentation, importance,
           performance, product, challenges, resources } = project;
 
-  // Resolved surface/text colors — fall back to the original light-theme
-  // values so existing project configs (churniq, glucoseiq) render exactly
-  // as before without needing any changes.
   const colors = {
     surface: theme.surface || "#ffffff",
     surfaceBorder: theme.surfaceBorder || "#e2e8f0",
@@ -145,8 +124,6 @@ export default function ProjectTemplate({ project }) {
     panelSubtext: theme.panelSubtext || "#94a3b8",
   };
 
-  // Copy overrides — default to the original ML-project language so existing
-  // configs don't need updating.
   const importanceEyebrow = importance.eyebrow || "09 · Model Explainability";
   const importanceHeading = importance.heading || "What actually drives the prediction";
   const performanceEyebrow = performance.eyebrow || "10 · Model Performance";
@@ -196,15 +173,17 @@ export default function ProjectTemplate({ project }) {
               </a>
             ))}
           </div>
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-            animate={reduceMotion ? false : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="rounded-2xl overflow-hidden shadow-xl"
-            style={{ border: `1px solid ${colors.surfaceBorder}` }}
-          >
-            <img src={hero.image} alt={`${hero.name} application screenshot`} className="w-full" />
-          </motion.div>
+          {hero.image && (
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+              animate={reduceMotion ? false : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-2xl overflow-hidden shadow-xl"
+              style={{ border: `1px solid ${colors.surfaceBorder}` }}
+            >
+              <img src={hero.image} alt={`${hero.name} application screenshot`} className="w-full" />
+            </motion.div>
+          )}
         </section>
 
         {/* ── Key metrics ── */}
@@ -262,26 +241,34 @@ export default function ProjectTemplate({ project }) {
           )}
         </Section>
 
-        {/* ── EDA ── */}
-        <Section id="eda" eyebrow="05 · Exploration" title="Feature distributions" theme={theme} colors={colors}>
-          <p className="text-sm leading-relaxed mb-6" style={{ color: colors.textBody }}>{eda.text}</p>
-          <img src={eda.image} alt="Feature distribution histograms" className="w-full rounded-xl shadow-sm"
-               style={{ border: `1px solid ${colors.surfaceBorder}` }} />
-        </Section>
+        {/* ── EDA — entire section skipped if no eda object supplied ── */}
+        {eda && (
+          <Section id="eda" eyebrow="05 · Exploration" title="Feature distributions" theme={theme} colors={colors}>
+            {eda.text && <p className="text-sm leading-relaxed mb-6" style={{ color: colors.textBody }}>{eda.text}</p>}
+            {eda.image && (
+              <img src={eda.image} alt="Feature distribution histograms" className="w-full rounded-xl shadow-sm"
+                   style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+            )}
+          </Section>
+        )}
 
         {/* ── Exploratory Analysis ── */}
         <Section id="exploratory" eyebrow="06 · Exploratory Analysis" title={exploratory.title} theme={theme} colors={colors}>
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             {exploratory.insights.map((i) => <InsightCard key={i.title} title={i.title} colors={colors}>{i.desc}</InsightCard>)}
           </div>
-          <img src={exploratory.image} alt="Exploratory analysis chart" className="w-full rounded-xl shadow-sm"
-               style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          {exploratory.image && (
+            <img src={exploratory.image} alt="Exploratory analysis chart" className="w-full rounded-xl shadow-sm"
+                 style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          )}
         </Section>
 
         {/* ── Correlation ── */}
         <Section id="correlation" eyebrow="07 · Correlation Analysis" title={correlation.title} theme={theme} colors={colors}>
-          <img src={correlation.image} alt="Correlation heatmap" className="w-full rounded-xl shadow-sm mb-6"
-               style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          {correlation.image && (
+            <img src={correlation.image} alt="Correlation heatmap" className="w-full rounded-xl shadow-sm mb-6"
+                 style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          )}
           <div className="rounded-xl p-6" style={{ background: theme.primary }}>
             <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: theme.accent }}>Interesting Discovery</div>
             <div className="flex items-center gap-8 mb-3">
@@ -313,19 +300,23 @@ export default function ProjectTemplate({ project }) {
               </div>
             ))}
           </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {segmentation.images.map((img) => (
-              <img key={img} src={img} alt="Segmentation chart" className="w-full rounded-xl shadow-sm"
-                   style={{ border: `1px solid ${colors.surfaceBorder}` }} />
-            ))}
-          </div>
+          {segmentation.images && segmentation.images.length > 0 && (
+            <div className="grid md:grid-cols-2 gap-4">
+              {segmentation.images.map((img) => (
+                <img key={img} src={img} alt="Segmentation chart" className="w-full rounded-xl shadow-sm"
+                     style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+              ))}
+            </div>
+          )}
           {segmentation.note && <p className="text-xs mt-4" style={{ color: colors.textMuted }}>{segmentation.note}</p>}
         </Section>
 
-        {/* ── Feature Importance ── */}
+        {/* ── Feature Importance / Signal Analysis ── */}
         <Section id="importance" eyebrow={importanceEyebrow} title={importanceHeading} theme={theme} colors={colors}>
-          <img src={importance.image} alt="Importance chart" className="w-full rounded-xl shadow-sm mb-4"
-               style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          {importance.image && (
+            <img src={importance.image} alt="Importance chart" className="w-full rounded-xl shadow-sm mb-4"
+                 style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          )}
           <p className="text-sm leading-relaxed" style={{ color: colors.textBody }}>{importance.text}</p>
         </Section>
 
@@ -334,12 +325,14 @@ export default function ProjectTemplate({ project }) {
           <div className={`grid grid-cols-2 md:grid-cols-${performance.stats.length} gap-4 mb-6`}>
             {performance.stats.map((s) => <StatCard key={s.label} {...s} theme={theme} colors={colors} />)}
           </div>
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            {performance.images.map((img) => (
-              <img key={img} src={img} alt="Performance chart" className="w-full rounded-xl shadow-sm"
-                   style={{ border: `1px solid ${colors.surfaceBorder}` }} />
-            ))}
-          </div>
+          {performance.images && performance.images.length > 0 && (
+            <div className="grid md:grid-cols-2 gap-4 mb-6">
+              {performance.images.map((img) => (
+                <img key={img} src={img} alt="Performance chart" className="w-full rounded-xl shadow-sm"
+                     style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+              ))}
+            </div>
+          )}
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 flex gap-3">
             <AlertTriangle size={20} className="text-amber-600 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-amber-900 leading-relaxed">{performance.caveat}</p>
@@ -359,7 +352,9 @@ export default function ProjectTemplate({ project }) {
             {product.cases.map((c) => (
               <div key={c.label}>
                 <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: c.color }}>{c.label}</div>
-                <img src={c.image} alt={c.label} className="w-full rounded-xl border-2 shadow-sm" style={{ borderColor: c.color }} />
+                {c.image && (
+                  <img src={c.image} alt={c.label} className="w-full rounded-xl border-2 shadow-sm" style={{ borderColor: c.color }} />
+                )}
               </div>
             ))}
           </div>
@@ -370,18 +365,24 @@ export default function ProjectTemplate({ project }) {
             </div>
           )}
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: colors.textMuted }}>{productFormLabel}</div>
-              <img src={product.formImage} alt={productFormAlt} className="w-full rounded-xl shadow-sm"
-                   style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+          {(product.formImage || product.actionImage) && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {product.formImage && (
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: colors.textMuted }}>{productFormLabel}</div>
+                  <img src={product.formImage} alt={productFormAlt} className="w-full rounded-xl shadow-sm"
+                       style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+                </div>
+              )}
+              {product.actionImage && (
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: colors.textMuted }}>{productActionLabel}</div>
+                  <img src={product.actionImage} alt={productActionAlt} className="w-full rounded-xl shadow-sm"
+                       style={{ border: `1px solid ${colors.surfaceBorder}` }} />
+                </div>
+              )}
             </div>
-            <div>
-              <div className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: colors.textMuted }}>{productActionLabel}</div>
-              <img src={product.actionImage} alt={productActionAlt} className="w-full rounded-xl shadow-sm"
-                   style={{ border: `1px solid ${colors.surfaceBorder}` }} />
-            </div>
-          </div>
+          )}
         </Section>
 
         {/* ── Challenges & Decisions ── */}
