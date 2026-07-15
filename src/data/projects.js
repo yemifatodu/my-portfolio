@@ -55,30 +55,17 @@ export const projectData = [
     repo: "https://github.com/yemifatodu/arbitrage-iq"
   },
   {
-    slug: "diabetes-prediction",
-    title: "Diabetes Prediction Model Using Machine Learning in Python",
-    description: "This healthcare analytics project involved developing a supervised machine learning model to predict diabetes risk using logistic regression and exploratory data analysis (EDA). Using Python, Pandas, NumPy and statistical modeling techniques, I engineered features and optimized predictive accuracy by 18%. The model identified glucose levels, BMI and age as primary risk indicators, enabling improved early-detection strategies.",
-    method: "Python • Pandas • NumPy • Matplotlib • Data Cleaning • EDA • Logistic Regression • Visualization",
-    impact: "Improved outcome prediction accuracy by 18%",
-    role: "Lead Data Analyst",
-    tech: ["Jupyter Notebook", "Streamlit"],
-    featured: true,
-    blog: "https://medium.com/@yemifatodu/harnessing-data-science-for-diabetes-prediction-transforming-healthcare-through-predictive-b57272b224e1",
-    dashboard: "https://github.com/yemifatodu/DIABETESPROJECT-MERI-SKILL#presentation-of-report-and-findings",
-    repo: "https://github.com/yemifatodu/DIABETESPROJECT-MERI-SKILL/blob/main/diabetes%20pro.ipynb"
-  },
-  {
-    slug: "adidas-sales",
-    title: "Retail Sales Data Analysis & Business Intelligence Dashboard (Adidas 2020–2021)",
-    description: "Conducted a full-scale sales analytics and business intelligence project analyzing 9,649 retail transactions across five U.S. regions. Using SQL, Excel and Tableau dashboards, I evaluated revenue growth, product performance, operating margins and post-pandemic sales trends.",
-    method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Regional & Product Analysis • KPI Tracking",
-    impact: "Identified top-performing regions driving revenue stability",
+    slug: "adidas-sales-performance",
+    title: "Adidas Sales & Profit Diagnostics — Two-Year Retail BI Analysis (2020–2021)",
+    description: "A fully verified business intelligence diagnostics project analyzing 9,648 Adidas US retail transactions across five regions and two pandemic years. Using SQL, Excel, and 16 Tableau dashboards, I evaluated revenue growth, the in-store-to-online sales-method shift, regional and retailer profit swings, and product-category performance — with every figure in the final report and articles independently re-verified against the raw source data, and four real discrepancies found and resolved along the way.",
+    method: "SQL • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Regional & Product Analysis • KPI Tracking • Source-Data Verification",
+    impact: "324.07% operating profit growth (2020→2021) — traced the in-store-to-online sales-method shift (2.48% → 33.87% of total sales) and corrected two misattributed growth claims through direct dataset verification",
     role: "Business Intelligence Analyst",
     tech: ["Excel", "SQL", "Tableau"],
     featured: true,
     blog: "https://medium.com/@yemifatodu/the-digital-shift-how-covid-19-reshaped-adidas-sales-methods-and-what-it-means-for-retailers-6e69e758e62a",
-    dashboard: "https://public.tableau.com/app/profile/yemi.fatodu1473/viz/ADIDASPRODUCTSALESANALYSISFORYEAR2020AND2021/Dashboard1",
-    repo: "https://github.com/yemifatodu/ADIDAS-PRODUCT-SALES-ANALYSIS-FOR-THE-YEAR-2020-AND-2021#adidas-product-sales-analysis-for-the-year-2020-and-2021"
+    dashboard: "https://tabsoft.co/3QUmmCz",
+    repo: "https://github.com/yemifatodu/-projects-adidas-sales-performance-profit-diagnostics"
   },
   {
     slug: "meriskill-sales",
@@ -133,4 +120,3 @@ export const projectData = [
     repo: "https://github.com/yemifatodu/HR_Analysis_meriSkill_project_Internship"
   }
 ];
-
