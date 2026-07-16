@@ -7,6 +7,7 @@ import ArbitrageIQPage from "./pages/ArbitrageIQPage";
 import AdidasSalesPage from "./pages/AdidasSalesPage";
 import ArticlesPage from "./pages/ArticlesPage";
 import ArticlePage from "./pages/ArticlePage";
+import ResumeRedirect from "./pages/ResumeRedirect";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
@@ -77,7 +78,7 @@ export default function PortfolioPreview() {
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
       <Route path="/articles/:slug" element={<ArticlePage />} />
-      <Route path="/resume" element={<Navigate to="/Yemi_Fatodu_CV.pdf" replace />} />
+      <Route path="/resume" element={<ResumeRedirect />} />
       <Route path="*" element={<>
         <Helmet>
           <title>Opeyemi Fatodu | Data Scientist & Full-Stack Developer</title>
@@ -723,6 +724,7 @@ export default function PortfolioPreview() {
     </Routes>
   );
 }
+
 
 
 
