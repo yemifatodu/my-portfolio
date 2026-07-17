@@ -5,6 +5,7 @@ import ChurnIQPage from "./pages/ChurnIQPage";
 import GlucoseIQPage from "./pages/GlucoseIQPage";
 import ArbitrageIQPage from "./pages/ArbitrageIQPage";
 import AdidasSalesPage from "./pages/AdidasSalesPage";
+import TitanicSurvivalPage from "./pages/TitanicSurvivalPage";
 import ArticlesPage from "./pages/ArticlesPage";
 import ArticlePage from "./pages/ArticlePage";
 import ResumeRedirect from "./pages/ResumeRedirect";
@@ -75,6 +76,7 @@ export default function PortfolioPreview() {
       <Route path="/projects/glucoseiq" element={<GlucoseIQPage />} />
       <Route path="/projects/arbitrageiq" element={<ArbitrageIQPage />} />
       <Route path="/projects/adidas-sales-performance" element={<AdidasSalesPage />} />
+      <Route path="/projects/titanic-survival-analysis" element={<TitanicSurvivalPage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
       <Route path="/articles/:slug" element={<ArticlePage />} />

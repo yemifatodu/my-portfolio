@@ -97,8 +97,8 @@ export const projectData = [
     slug: "titanic",
     title: "Voyage of Fate: Titanic Survival Analysis & Predictive Modeling",
     description: "A statistical analysis of Titanic passenger survival patterns using a 714-record dataset. Leveraged Excel and Tableau to examine the impact of passenger class, gender and demographics on survival outcomes. Higher survival rates for first-class passengers and women highlighted socio-economic disparities.",
-    method: "Excel • Tableau • Data Cleaning • EDA • Dashboarding • Visualization • Survival Analysis • Class & Gender Impact • Historical Data Interpretation",
-    impact: "Highlighted key survival drivers for modeling through descriptive analysis.",
+    method: "Python • Excel • Tableau • Data Cleaning • EDA • Dashboarding • Survival Analysis • Class & Gender Impact • Historical Data Interpretation",
+    impact: "40.6% sample survival rate vs. 31.9% historical - First Class survived at 65.6% vs. 23.9% in Third Class",
     role: "Data Scientist",
     tech: ["Python", "Statistics", "EDA"],
     featured: true,
@@ -120,3 +120,4 @@ export const projectData = [
     repo: "https://github.com/yemifatodu/HR_Analysis_meriSkill_project_Internship"
   }
 ];
+
