@@ -75,7 +75,8 @@ export const titanicSurvivalConfig = {
     links: [
       { label: "Tableau Dashboard", href: "https://public.tableau.com/views/TitleVoyageofFateUnravelingtheTitanicTragedy/Dashboard1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link", primary: true },
       { label: "GitHub", href: "https://github.com/yemifatodu/THE-TITANIC-PROJECT-VOYAGE-OF-FATE" },
-      { label: "Full Report", href: "https://github.com/yemifatodu/THE-TITANIC-PROJECT-VOYAGE-OF-FATE" },
+      { label: "Full Report", href: `${IMG}/Titanic_Survival_Analysis_Report.pdf` },
+      { label: "Presentation", href: `${IMG}/Titanic_Survival_Analysis.pptx` },
     ],
   },
 
@@ -141,7 +142,7 @@ export const titanicSurvivalConfig = {
     title: "The gender gap inside every class",
     image: `${IMG}/viz2-female-nonsurvivors-by-class.png`,
     discovery: {
-      from: "28.8%",
+      from: "20.5%",
       fromLabel: "Male survival rate (sample)",
       to: "75.5%",
       toLabel: "Female survival rate (sample)",
@@ -165,7 +166,7 @@ export const titanicSurvivalConfig = {
     eyebrow: "09 · What Drove the Numbers",
     heading: "Gender was the single strongest signal",
     image: `${IMG}/viz5-male-nonsurvivors-by-class.png`,
-    text: "Male passengers made up 63.4% of the sample (453 of 714) but survived at only 28.8%, while female passengers (36.6% of the sample, 261 of 714) survived at 75.5%. Third Class carried the highest concentration of male non-survivors — 59.7% of all male non-survivors in the sample — compounding the class disadvantage on top of the gender one.",
+    text: "Male passengers made up 63.4% of the sample (453 of 714) but survived at only 20.5%, while female passengers (36.6% of the sample, 261 of 714) survived at 75.5%. Third Class carried the highest concentration of male non-survivors — 59.7% of all male non-survivors in the sample — compounding the class disadvantage on top of the gender one.",
   },
 
   performance: {
@@ -201,7 +202,9 @@ export const titanicSurvivalConfig = {
   resources: [
     { icon: "ExternalLink", title: "Tableau Public Dashboard", desc: "7 live, interactive charts — explore class and gender survival splits yourself.", href: "https://public.tableau.com/views/TitleVoyageofFateUnravelingtheTitanicTragedy/Dashboard1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link" },
     { icon: "Github", title: "GitHub Repository", desc: "Full source — cleaned dataset reference, written report, and dashboard assets.", href: "https://github.com/yemifatodu/THE-TITANIC-PROJECT-VOYAGE-OF-FATE" },
-    { icon: "FileText", title: "Full Report: Voyage of Fate", desc: "The complete class-and-gender survival analysis, with all 7 visualizations.", href: "https://github.com/yemifatodu/THE-TITANIC-PROJECT-VOYAGE-OF-FATE" },
+    { icon: "FileText", title: "Full Report: Voyage of Fate", desc: "The complete class-and-gender survival analysis, with all 7 visualizations.", href: `${IMG}/Titanic_Survival_Analysis_Report.pdf` },
+    { icon: "Presentation", title: "Presentation Deck", desc: "An 8-slide summary deck covering the problem, findings, and caveats.", href: `${IMG}/Titanic_Survival_Analysis.pptx` },
     { icon: "FileText", title: "Article: Speed and Load Dynamics", desc: "Was the Titanic overloaded, and did speed seal its fate? A companion narrative piece.", href: "https://github.com/yemifatodu/THE-TITANIC-PROJECT-VOYAGE-OF-FATE" },
   ],
 };
+
