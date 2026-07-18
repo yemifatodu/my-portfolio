@@ -1,0 +1,19 @@
+# Force these file types to always be treated as binary — never let Git
+# convert line endings (LF/CRLF) inside them, which silently corrupts
+# PDFs, Office files, images, and archives over time.
+
+*.pdf   binary
+*.pptx  binary
+*.docx  binary
+*.xlsx  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.zip   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
