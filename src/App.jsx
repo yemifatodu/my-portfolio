@@ -154,9 +154,9 @@ export default function PortfolioPreview() {
                       Contact <ChevronUp size={14} className="rotate-180 group-hover:rotate-0 transition" />
                     </button>
                     <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-                      <a href="mailto:hello@yemifatodu.online" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition">
+                      <a href="mailto:info@yemifatodu.online" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition">
                         <Mail size={16} className="text-teal-500" />
-                        <span>hello@yemifatodu.online</span>
+                        <span>info@yemifatodu.online</span>
                       </a>
                       <a href="tel:+2347033736377" className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm transition border-t border-slate-100 dark:border-slate-800">
                         <Phone size={16} className="text-teal-500" />
@@ -205,7 +205,7 @@ export default function PortfolioPreview() {
                     Huuboi.com <ExternalLink size={14} />
                   </a>
                   <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
-                    <a href="mailto:hello@yemifatodu.online" className="text-sm hover:text-teal-500 transition flex items-center gap-2">
+                    <a href="mailto:info@yemifatodu.online" className="text-sm hover:text-teal-500 transition flex items-center gap-2">
                       <Mail size={16} /> Email
                     </a>
                     <a href="tel:+2347033736377" className="text-sm hover:text-teal-500 transition flex items-center gap-2">
@@ -294,9 +294,6 @@ export default function PortfolioPreview() {
                   >
                     <a href="#projects" className="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-teal-600 shadow-lg shadow-teal-600/30 hover:bg-teal-500 hover:-translate-y-0.5 transition duration-200">
                       View Projects
-                    </a>
-                    <a href="/resume" className="px-5 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 hover:-translate-y-0.5 transition duration-200">
-                      Download Resume
                     </a>
                     <a href="#contact" className="px-5 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 hover:-translate-y-0.5 transition duration-200">
                       Let's Work Together
@@ -726,6 +723,8 @@ export default function PortfolioPreview() {
     </Routes>
   );
 }
+
+
 
 
 
