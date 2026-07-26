@@ -32,6 +32,19 @@ export default function ArticlePage() {
             mainEntityOfPage: url
           })}
         </script>
+        {article.faq && (
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: article.faq.map(f => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a }
+              }))
+            })}
+          </script>
+        )}
       </Helmet>
 
       <main className="max-w-3xl mx-auto py-16 px-6">
@@ -59,7 +72,7 @@ export default function ArticlePage() {
         )}
 
         <article
-          className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-teal-500"
+          className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-a:text-teal-500 [&_p]:mb-5 [&_p]:leading-relaxed [&_h2]:mt-10 [&_h2]:mb-4 [&_figure]:my-8 [&_figcaption]:text-sm [&_figcaption]:text-slate-500 [&_figcaption]:mt-2 [&_figcaption]:text-center"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
@@ -74,4 +87,6 @@ export default function ArticlePage() {
     </div>
   );
 }
+
+
 
