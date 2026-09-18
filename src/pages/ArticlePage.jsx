@@ -83,10 +83,20 @@ export default function ArticlePage() {
             </span>
           ))}
         </div>
+
+        <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Link to="/articles" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-teal-500 transition">
+            <ArrowLeft size={16} /> All Articles
+          </Link>
+          <Link to="/" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-teal-600 hover:bg-teal-500 hover:-translate-y-0.5 transition duration-200">
+            Back to Homepage
+          </Link>
+        </div>
       </main>
     </div>
   );
 }
+
 
 
 

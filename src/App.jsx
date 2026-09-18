@@ -1,21 +1,22 @@
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import { projectData } from "./data/projects";
+import { articlesData } from "./data/articles";
 import ProjectPage from "./pages/ProjectPage";
 import ChurnIQPage from "./pages/ChurnIQPage";
 import GlucoseIQPage from "./pages/GlucoseIQPage";
 import ArbitrageIQPage from "./pages/ArbitrageIQPage";
 import AdidasSalesPage from "./pages/AdidasSalesPage";
-import TitanicSurvivalPage from "./pages/TitanicSurvivalPage";
 import ArticlesPage from "./pages/ArticlesPage";
 import ArticlePage from "./pages/ArticlePage";
+import ScrollToTop from "./pages/ScrollToTop";
 import ResumeRedirect from "./pages/ResumeRedirect";
+import SkillsSection from "./pages/SkillsSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useReducedMotion } from "framer-motion";
-import { 
-  Github, Linkedin, Sun, Moon, Globe, Menu, X, ChevronUp, 
-  Mail, Phone, Award, Code, Database, Brain, 
-  Layers, Zap, Sparkles, ArrowRight, ExternalLink, Newspaper
+import {
+  Github, Linkedin, Sun, Moon, Globe, Menu, X, ChevronUp,
+  Mail, Phone, ArrowRight, ExternalLink, Plus
 } from "lucide-react";
 import React from "react";
 import { Helmet } from "react-helmet-async";
@@ -25,7 +26,7 @@ export default function PortfolioPreview() {
     const saved = localStorage.getItem('theme');
     return saved || 'dark';
   });
-  
+
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [showScrollTop, setShowScrollTop] = React.useState(false);
   const [expandedAbout, setExpandedAbout] = React.useState(false);
@@ -45,17 +46,9 @@ export default function PortfolioPreview() {
 
   const reduceMotion = useReducedMotion();
 
-  const toolsData = [
-    { name: "Next.js / React", level: 90, link: "https://huuboi.com", description: "Modern frontend framework" },
-    { name: "Supabase / PostgreSQL", level: 85, link: "https://huuboi.com", description: "Backend & database" },
-    { name: "Vercel / AWS", level: 90, link: "https://huuboi.com", description: "Deployment & hosting" },
-    { name: "Python (ML / Automation)", level: 75, link: "https://github.com/yemifatodu/Python-Certification-Repos", description: "Data science & scripting" },
-    { name: "SQL Server & T-SQL", level: 80, link: "https://github.com/yemifatodu/SQL-Certification-Repos", description: "Enterprise databases" },
-    { name: "Tableau / Power BI", level: 75, link: "https://tabsoft.co/3QUmmCz", description: "Business intelligence" }
-  ];
+  const topArticles = [...articlesData].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 2);
 
   const testimonials = [
-
     {
       quote: "Clear communication, excellent dashboards, and timely delivery. He didn't just deliver descriptive visualizations; he architected a baseline workflow that automated long-term asset evaluations.",
       author: "Corporate Client",
@@ -71,12 +64,13 @@ export default function PortfolioPreview() {
   ];
 
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/projects/churniq" element={<ChurnIQPage />} />
       <Route path="/projects/glucoseiq" element={<GlucoseIQPage />} />
       <Route path="/projects/arbitrageiq" element={<ArbitrageIQPage />} />
       <Route path="/projects/adidas-sales-performance" element={<AdidasSalesPage />} />
-      <Route path="/projects/titanic-survival-analysis" element={<TitanicSurvivalPage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
       <Route path="/articles/:slug" element={<ArticlePage />} />
@@ -104,7 +98,7 @@ export default function PortfolioPreview() {
             <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-950/90 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 transition-colors">
               <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  <span className="text-xl font-bold tracking-tight font-heading text-slate-900 dark:text-white">
                     Yemi Fatodu
                   </span>
                   <span className="hidden sm:inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 font-medium border border-emerald-200 dark:border-emerald-800/50">
@@ -115,36 +109,36 @@ export default function PortfolioPreview() {
                     Available for work
                   </span>
                 </div>
-                
+
                 <nav className="hidden md:flex items-center space-x-6">
-                  <button 
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-                    className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200" 
+                  <button
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
                     aria-label="Toggle theme"
                   >
                     {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
                   </button>
                   {['Home', 'About', 'Projects', 'Skills'].map(item => (
-                    <a 
-                      key={item} 
-                      href={`#${item.toLowerCase()}`} 
+                    <a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
                       className="hover:text-teal-500 transition text-sm font-medium relative group"
                     >
                       {item}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all group-hover:w-full" />
                     </a>
                   ))}
-                  <Link 
-                    to="/articles" 
+                  <Link
+                    to="/articles"
                     className="hover:text-teal-500 transition text-sm font-medium relative group flex items-center gap-1"
                   >
                     Articles
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-teal-500 transition-all group-hover:w-full" />
                   </Link>
-                  <a 
-                    href="https://huuboi.com" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://huuboi.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-teal-400 hover:text-teal-300 font-semibold transition text-sm flex items-center gap-1"
                   >
                     Huuboi.com <ExternalLink size={14} />
@@ -176,26 +170,25 @@ export default function PortfolioPreview() {
                 </div>
               </div>
 
-              {/* Mobile Menu */}
               {mobileMenuOpen && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   className="md:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex flex-col gap-3"
                 >
                   {['Home', 'About', 'Projects', 'Skills'].map(item => (
-                    <a 
-                      key={item} 
-                      href={`#${item.toLowerCase()}`} 
+                    <a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
                       className="hover:text-teal-500 transition text-sm font-medium py-1"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item}
                     </a>
                   ))}
-                  <Link 
-                    to="/articles" 
+                  <Link
+                    to="/articles"
                     className="hover:text-teal-500 transition text-sm font-medium py-1"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -220,7 +213,6 @@ export default function PortfolioPreview() {
             <section className="max-w-6xl mx-auto py-12 md:py-20 px-6">
               <div className="grid md:grid-cols-[340px_1fr] gap-10 md:gap-14 items-center">
 
-                {/* Portrait */}
                 <motion.div
                   initial={reduceMotion ? false : { opacity: 0, x: -20 }}
                   animate={reduceMotion ? false : { opacity: 1, x: 0 }}
@@ -237,7 +229,6 @@ export default function PortfolioPreview() {
                   />
                 </motion.div>
 
-                {/* Text */}
                 <div className="text-center md:text-left">
                   <motion.h1
                     initial={reduceMotion ? false : { opacity: 0, y: 20 }}
@@ -309,18 +300,16 @@ export default function PortfolioPreview() {
               <h2 className="text-3xl font-bold mb-6 tracking-tight font-heading">About Me</h2>
               <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm">
                 <CardContent className="p-6 md:p-8 text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
-
-                  
                   <p>I am an AI Developer, Data Scientist, and Machine Learning Engineer passionate about building intelligent software that transforms complex data into practical business solutions. My work combines machine learning, business intelligence, data engineering, and modern web technologies to create applications that help organizations make faster, smarter, and more informed decisions.</p>
-                  
+
                   <p>I specialize in designing end-to-end analytics solutions, from data collection and preprocessing to predictive modeling, interactive dashboards, REST APIs, and production-ready applications. Using technologies such as Python, SQL, Streamlit, FastAPI, and Tableau, I develop scalable platforms that automate workflows, uncover actionable insights, and solve real-world challenges across healthcare, finance, and emerging technologies.</p>
-                  
-                  <p>My flagship fintech and ML apps include <strong>ChurnIQ</strong>, a bank churn predictor achieving 86.8% accuracy; <strong>GlucoseIQ</strong>, a diabetes risk assessment tool powered by dual Random Forest and XGBoost models; and <strong>ArbitrageIQ</strong>, a live crypto arbitrage tracker that scans multiple exchanges and delivers real-time alerts via Telegram. Each is built end-to-end — from model training to a deployed, interactive Streamlit dashboard — and reflects how I approach data science: not as static reports, but as production systems people can actually use.</p>
-                  
+
+                  <p>My flagship fintech and ML apps include <strong>ChurnIQ</strong>, a bank churn predictor achieving 86.80% accuracy; <strong>GlucoseIQ</strong>, a diabetes risk assessment tool powered by dual Random Forest and XGBoost models; and <strong>ArbitrageIQ</strong>, a live crypto arbitrage tracker that scans multiple exchanges and delivers real-time alerts via Telegram. Each is built end-to-end — from model training to a deployed, interactive Streamlit dashboard — and reflects how I approach data science: not as static reports, but as production systems people can actually use.</p>
+
                   <p>As the founder of Huuboi, I designed a technology framework for digital travel services that integrates international booking workflows, localized transportation modules, and insurance processes into a unified platform. This experience strengthened my ability to bridge data, software engineering, and business strategy while building solutions that scale.</p>
-                  
+
                   <p>I enjoy tackling complex problems, learning emerging technologies, and developing AI-powered products that deliver measurable value. Whether working independently or as part of a multidisciplinary team, my goal is to build software that is technically robust, user-focused, and impactful.</p>
-                  
+
                   <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
                     <button onClick={() => setExpandedAbout(!expandedAbout)} className="text-teal-500 dark:text-teal-400 font-semibold hover:underline text-sm flex items-center gap-2">
                       {expandedAbout ? '▼ Hide' : '▶ View'} Huuboi Skills Breakdown
@@ -386,29 +375,51 @@ export default function PortfolioPreview() {
               </Card>
             </section>
 
-            {/* ─── Articles & Research ─── */}
-            <section id="articles" className="max-w-5xl mx-auto py-12 px-6">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-3xl font-bold tracking-tight font-heading">Articles & Research</h2>
-                <Link to="/articles" className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-teal-500 hover:underline">
-                  View all <ArrowRight size={14} />
-                </Link>
+            {/* ─── Articles & Research (teaser) ─── */}
+            <section id="articles" className="max-w-6xl mx-auto py-12 px-6">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold tracking-tight mb-3 font-heading">Articles & Research</h2>
+                <p className="text-slate-500 dark:text-slate-400 max-w-xl">
+                  Writing on data science, machine learning, and business intelligence — project breakdowns alongside notes on how I think as an analyst.
+                </p>
               </div>
-              <p className="text-slate-500 dark:text-slate-400 mb-8">I build and humanize technical content to clearly map operational intelligence, metric normalization, and deep machine learning strategy for the web.</p>
-              <div className="grid md:grid-cols-2 gap-6">
-                {[
-                  { title: "Harnessing Data Science for Diabetes Prediction", link: "https://medium.com/@yemifatodu/harnessing-data-science-for-diabetes-prediction-transforming-healthcare-through-predictive-b57272b224e1" },
-                  { title: "The Digital Shift: How COVID-19 Reshaped Adidas Sales", link: "https://medium.com/@yemifatodu/the-digital-shift-how-covid-19-reshaped-adidas-sales-methods-and-what-it-means-for-retailers-6e69e758e62a" }
-                ].map(post => (
-                  <a key={post.title} href={post.link} target="_blank" rel="noopener noreferrer" className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 hover:border-teal-500 dark:hover:border-teal-400 transition-all duration-300 shadow-sm block group">
-                    <h3 className="text-lg font-semibold group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors">{post.title}</h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 flex items-center gap-1 font-medium">Read on Medium <span className="text-xs transition-transform group-hover:translate-x-0.5">→</span></p>
-                  </a>
+
+              <div className="divide-y divide-slate-200 dark:divide-slate-800 border-t border-b border-slate-200 dark:border-slate-800">
+                {topArticles.map((article) => (
+                  <Link
+                    key={article.slug}
+                    to={`/articles/${article.slug}`}
+                    className="flex items-start justify-between gap-4 py-5 group"
+                  >
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 text-xs text-slate-400 mb-1.5">
+                        <span className={`px-2 py-0.5 font-bold uppercase tracking-wider rounded-full ${
+                          article.type === "insight"
+                            ? "bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400"
+                        }`}>
+                          {article.type === "insight" ? "INSIGHT" : "CASE STUDY"}
+                        </span>
+                        <span>{new Date(article.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                        <span>&middot;</span>
+                        <span>{article.readTime}</span>
+                      </div>
+                      <h3 className="text-lg font-semibold tracking-tight group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors">
+                        {article.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-1">{article.excerpt}</p>
+                    </div>
+                    <Plus
+                      size={20}
+                      className="shrink-0 mt-1 text-slate-400 group-hover:text-teal-500 group-hover:rotate-90 transition-all duration-200"
+                    />
+                  </Link>
                 ))}
               </div>
-              <div className="mt-6 sm:hidden">
-                <Link to="/articles" className="inline-flex items-center gap-1 text-sm font-semibold text-teal-500 hover:underline">
-                  View all articles <ArrowRight size={14} />
+
+              <div className="mt-8 text-center">
+                <Link to="/articles" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-teal-600 hover:bg-teal-500 hover:-translate-y-0.5 transition duration-200">
+                  Read Articles <ArrowRight size={16} />
                 </Link>
               </div>
             </section>
@@ -443,7 +454,7 @@ export default function PortfolioPreview() {
                           </div>
                           <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{project.title}</h3>
                           <p className={`text-slate-500 dark:text-slate-400 text-sm leading-relaxed ${isHuuboi ? "" : "line-clamp-2"}`}>{project.description}</p>
-                          
+
                           <div className="flex flex-wrap gap-1.5 pt-2">
                             {project.tech.map((t) => (
                               <span key={t} className="text-xs px-2.5 py-1 font-medium bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg">{t}</span>
@@ -474,132 +485,7 @@ export default function PortfolioPreview() {
               </div>
             </section>
 
-            {/* ─── Skills / Technology Stack ─── */}
-            <section id="skills" className="max-w-5xl mx-auto py-16 px-6">
-              <h2 className="text-3xl font-bold mb-2 tracking-tight font-heading">Technology Stack</h2>
-              <p className="text-slate-500 dark:text-slate-400 mb-10 text-sm md:text-base">A comprehensive overview of my technical expertise across languages, frameworks, and tools</p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {/* Languages */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100 dark:bg-teal-950/50 rounded-xl">
-                      <Code size={20} className="text-teal-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Languages</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["Python", "SQL", "R"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* AI & Machine Learning */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100 dark:bg-teal-950/50 rounded-xl">
-                      <Brain size={20} className="text-teal-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">AI & Machine Learning</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["Machine Learning", "XGBoost", "Scikit-learn", "SHAP"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Backend */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100/70 dark:bg-teal-950/40 rounded-xl">
-                      <Database size={20} className="text-teal-600" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Backend</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["FastAPI", "REST APIs", "Node.js"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Frontend */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100 dark:bg-teal-950/50 rounded-xl">
-                      <Layers size={20} className="text-teal-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Frontend</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["React", "Next.js", "Streamlit"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Databases */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100/70 dark:bg-teal-950/40 rounded-xl">
-                      <Database size={20} className="text-teal-600 dark:text-teal-400" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Databases</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["PostgreSQL", "MongoDB", "Supabase"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Visualization */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100 dark:bg-teal-950/50 rounded-xl">
-                      <Globe size={20} className="text-teal-500" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Visualization</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["Tableau", "Plotly", "Power BI"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Cloud & Tools */}
-                <div className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800/80 rounded-2xl p-6 shadow-sm hover:shadow-md transition md:col-span-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-teal-100/70 dark:bg-teal-950/40 rounded-xl">
-                      <Zap size={20} className="text-teal-600" />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200">Cloud & Tools</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["Google Cloud", "Vercel", "GitHub"].map(item => (
-                      <span key={item} className="px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 rounded-lg text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
+            <SkillsSection />
 
             {/* ─── Experience ─── */}
             <section id="experience" className="max-w-5xl mx-auto py-16 px-6">
@@ -656,7 +542,7 @@ export default function PortfolioPreview() {
                     <CardContent className="p-6 md:p-8 flex flex-col justify-between h-full">
                       <p className="italic text-slate-600 dark:text-slate-300 text-sm leading-relaxed">"{testimonial.quote}"</p>
                       <div className="mt-4 pt-2 border-t border-slate-100 dark:border-slate-800">
-                        <p className="font-bold text-sm tracking-tight font-heading">{testimonial.author}</p>
+                        <p className="font-bold text-sm tracking-tight">{testimonial.author}</p>
                         <p className="text-xs text-slate-400 dark:text-slate-500">{testimonial.role}</p>
                       </div>
                     </CardContent>
@@ -700,6 +586,10 @@ export default function PortfolioPreview() {
                   <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition shadow-md whitespace-nowrap z-10">Fiverr</span>
                 </a>
               </div>
+
+              <p className="mt-8 text-xs text-slate-400 dark:text-slate-600">
+                Recruiting for a role? <a href="/Yemi_Fatodu_CV.pdf" download className="underline hover:text-teal-500 transition">Download resume</a>
+              </p>
             </section>
 
             {/* ─── Footer ─── */}
@@ -721,15 +611,9 @@ export default function PortfolioPreview() {
         )}
       </>} />
     </Routes>
+    </>
   );
 }
-
-
-
-
-
-
-
 
 
 

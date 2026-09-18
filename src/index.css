@@ -122,3 +122,23 @@
     @apply bg-background text-foreground;
     }
 }
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.marquee-left { animation-name: marquee-left; }
+.marquee-right { animation-name: marquee-right; }
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}

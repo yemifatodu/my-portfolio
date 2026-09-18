@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Plus } from "lucide-react";
+import { Plus, ArrowLeft } from "lucide-react";
 import { articlesData } from "../data/articles";
 
 export default function ArticlesPage() {
@@ -27,6 +27,9 @@ export default function ArticlesPage() {
       </Helmet>
 
       <main className="max-w-3xl mx-auto py-16 px-6">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-teal-500 transition mb-6">
+          <ArrowLeft size={16} /> Back to Homepage
+        </Link>
         <h1 className="text-4xl font-extrabold tracking-tight mb-2 font-heading">Articles</h1>
         <p className="text-slate-500 dark:text-slate-400 mb-10 max-w-2xl">
           Writing on data science, machine learning, and business intelligence -- project breakdowns alongside notes on how I think as an analyst.
@@ -68,4 +71,5 @@ export default function ArticlesPage() {
     </div>
   );
 }
+
 
