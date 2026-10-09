@@ -237,10 +237,10 @@ function Figure({ img, priority }) {
 
 function Block({ item }) {
   if (typeof item === "string") {
-    return <p className="mt-4 text-lg leading-7 text-stone-800">{item}</p>;
+    return <p className="mt-3.5 text-[17px] leading-[1.55] text-stone-800">{item}</p>;
   }
   return (
-    <ul className="mt-4 list-disc space-y-2 pl-6 text-lg leading-7 text-stone-800 marker:text-teal-800">
+    <ul className="mt-3.5 list-disc space-y-1.5 pl-6 text-[17px] leading-[1.55] text-stone-800 marker:text-teal-800">
       {item.list.map((li) => (
         <li key={li}>{li}</li>
       ))}
@@ -281,8 +281,8 @@ export default function FromRawDataToLiveProductPage() {
           <Link to={ARTICLES_INDEX} className="text-base text-teal-800 underline">
             Back to all articles
           </Link>
-          <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-5xl">{TITLE}</h1>
-          <p className="mt-4 text-xl leading-7 text-stone-700">
+          <h1 className="mt-6 text-4xl font-bold leading-tight sm:text-[44px]">{TITLE}</h1>
+          <p className="mt-4 text-lg leading-[1.55] text-stone-700">
             Data scientist, ML engineer, and full-stack builder. How I went from asking questions of
             spreadsheets to shipping products, and the work that shows it.
           </p>
@@ -311,8 +311,8 @@ export default function FromRawDataToLiveProductPage() {
 
           <article className="max-w-[68ch]">
             {SECTIONS.map((s) => (
-              <section key={s.id} id={s.id} className="mb-12 scroll-mt-8">
-                <h2 className="text-3xl font-bold leading-snug">{s.title}</h2>
+              <section key={s.id} id={s.id} className="mb-10 scroll-mt-8">
+                <h2 className="text-[28px] font-bold leading-tight">{s.title}</h2>
                 {s.body.map((item, i) => (
                   <Block key={i} item={item} />
                 ))}
@@ -320,7 +320,7 @@ export default function FromRawDataToLiveProductPage() {
                 {s.id === IMAGES.inline.afterSection && <Figure img={IMAGES.inline} />}
 
                 {s.id === "huuboi" && (
-                  <p className="mt-4 text-lg leading-7 text-stone-800">
+                  <p className="mt-3.5 text-[17px] leading-[1.55] text-stone-800">
                     <a className="text-teal-800 underline" href={HUUBOI_URL} target="_blank" rel="noopener noreferrer">Visit huuboi.com</a>
                   </p>
                 )}
@@ -328,13 +328,13 @@ export default function FromRawDataToLiveProductPage() {
             ))}
 
             <section aria-labelledby="selected-work" className="mb-14">
-              <h2 id="selected-work" className="text-3xl font-bold leading-snug">
+              <h2 id="selected-work" className="text-[28px] font-bold leading-tight">
                 Projects and write-ups mentioned here
               </h2>
               <ul className="mt-6 space-y-6">
                 <li>
                   <p className="text-xl font-semibold">HUUBOI</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     Global luxury travel platform on Next.js, Supabase, and Vercel.{" "}
                     <a className="text-teal-800 underline" href={HUUBOI_URL} target="_blank" rel="noopener noreferrer">
                       Visit huuboi.com
@@ -343,35 +343,35 @@ export default function FromRawDataToLiveProductPage() {
                 </li>
                 <li>
                   <p className="text-xl font-semibold">ChurnIQ</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     Churn prediction with a Random Forest at 86.80% accuracy and 0.864 ROC-AUC.{" "}
                     <Link className="text-teal-800 underline" to={CASE_STUDIES.churniq}>Read the case study</Link>{" · "}<Link className="text-teal-800 underline" to={ARTICLES.churniq}>Read the article</Link>
                   </p>
                 </li>
                 <li>
                   <p className="text-xl font-semibold">GlucoseIQ</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     Diabetes risk prediction where XGBoost led at 88.31% accuracy and 0.947 ROC-AUC.{" "}
                     <Link className="text-teal-800 underline" to={CASE_STUDIES.glucoseiq}>Read the case study</Link>{" · "}<Link className="text-teal-800 underline" to={ARTICLES.glucoseiq}>Read the article</Link>
                   </p>
                 </li>
                 <li>
                   <p className="text-xl font-semibold">ArbitrageIQ</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     Async crypto arbitrage scanner across five exchanges and 30 symbols.{" "}
                     <Link className="text-teal-800 underline" to={CASE_STUDIES.arbitrageiq}>Read the case study</Link>{" · "}<Link className="text-teal-800 underline" to={ARTICLES.arbitrageiq}>Read the article</Link>
                   </p>
                 </li>
                 <li>
                   <p className="text-xl font-semibold">Adidas Sales Dashboard</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     9,648 sales records explored in an interactive Tableau Public dashboard.{" "}
                     <Link className="text-teal-800 underline" to={CASE_STUDIES.adidas}>View the project</Link>{" · "}<Link className="text-teal-800 underline" to={ARTICLES.adidas}>Read the article</Link>
                   </p>
                 </li>
                 <li>
                   <p className="text-xl font-semibold">Titanic Survival Analysis</p>
-                  <p className="mt-1 text-lg leading-7 text-stone-800">
+                  <p className="mt-1 text-[17px] leading-[1.55] text-stone-800">
                     Exploratory analysis with every figure verified against the source data.{" "}
                     <Link className="text-teal-800 underline" to={CASE_STUDIES.titanic}>View the project</Link>{" · "}<Link className="text-teal-800 underline" to={ARTICLES.titanic}>Read the article</Link>
                   </p>
@@ -380,8 +380,8 @@ export default function FromRawDataToLiveProductPage() {
             </section>
 
             <section id="work-with-me" className="scroll-mt-8 border-t border-stone-300 pt-8">
-              <h2 className="text-3xl font-bold leading-snug">Work with me</h2>
-              <p className="mt-4 text-lg leading-7 text-stone-800">
+              <h2 className="text-[28px] font-bold leading-tight">Work with me</h2>
+              <p className="mt-3.5 text-[17px] leading-[1.55] text-stone-800">
                 I am open to remote contract work in data science, machine learning, and full-stack
                 development. If you are hiring, building, or investing, you can{" "}
                 <a className="text-teal-800 underline" href={`mailto:${EMAIL}`}>email me</a>
@@ -401,6 +401,23 @@ export default function FromRawDataToLiveProductPage() {
                 <a className="text-teal-800 underline" href="https://x.com/yemi_fatodu" target="_blank" rel="noopener noreferrer">X</a>.
               </p>
             </section>
+            <nav
+              aria-label="Article navigation"
+              className="mt-12 flex flex-wrap gap-3 border-t border-stone-300 pt-8"
+            >
+              <Link
+                to={ARTICLES_INDEX}
+                className="inline-flex items-center rounded-xl border border-stone-400 px-5 py-2.5 text-sm font-semibold text-stone-900 hover:bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
+              >
+                Back to all articles
+              </Link>
+              <Link
+                to="/"
+                className="inline-flex items-center rounded-xl bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
+              >
+                Back to homepage
+              </Link>
+            </nav>
           </article>
         </div>
       </div>
