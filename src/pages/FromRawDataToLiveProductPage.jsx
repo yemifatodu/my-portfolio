@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 /* ------------------------------------------------------------------
    SETTINGS: edit these before publishing
@@ -192,74 +192,28 @@ const SECTIONS = [
 /* ------------------------------------------------------------------
    PAGE
 ------------------------------------------------------------------- */
-function useSeo() {
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = SEO_TITLE;
-
-    const setMeta = (attr, key, content) => {
-      let el = document.head.querySelector(`meta[${attr}="${key}"]`);
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, key);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-
-    const url = SITE + PAGE_PATH;
-    setMeta("name", "description", META_DESCRIPTION);
-    setMeta("property", "og:title", TITLE);
-    setMeta("property", "og:description", META_DESCRIPTION);
-    setMeta("property", "og:type", "article");
-    setMeta("property", "og:url", url);
-    const ogImage = IMAGES.hero.src
-      ? (IMAGES.hero.src.startsWith("http") ? IMAGES.hero.src : SITE + IMAGES.hero.src)
-      : "";
-    if (ogImage) {
-      setMeta("property", "og:image", ogImage);
-      setMeta("name", "twitter:image", ogImage);
-    }
-    setMeta("name", "twitter:card", "summary_large_image");
-    setMeta("name", "twitter:title", TITLE);
-    setMeta("name", "twitter:description", META_DESCRIPTION);
-
-    let canonical = document.head.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute("href", url);
-
-    const ld = document.createElement("script");
-    ld.type = "application/ld+json";
-    ld.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Article",
-      headline: TITLE,
-      description: META_DESCRIPTION,
-      datePublished: PUBLISHED,
-      dateModified: PUBLISHED,
-      mainEntityOfPage: url,
-      ...(ogImage ? { image: [ogImage] } : {}),
-      author: {
-        "@type": "Person",
-        name: "Yemi Fatodu",
-        url: SITE,
-        sameAs: [LINKEDIN_URL, GITHUB_URL, "https://x.com/yemi_fatodu"],
-        image: SITE + AUTHOR_PHOTO.src,
-        jobTitle: JOB_TITLE_SCHEMA,
-      },
-    });
-    document.head.appendChild(ld);
-
-    return () => {
-      document.title = prevTitle;
-      document.head.removeChild(ld);
-    };
-  }, []);
-}
+const PAGE_URL = SITE + PAGE_PATH;
+const OG_IMAGE = IMAGES.hero.src
+  ? (IMAGES.hero.src.startsWith("http") ? IMAGES.hero.src : SITE + IMAGES.hero.src)
+  : "";
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: TITLE,
+  description: META_DESCRIPTION,
+  datePublished: PUBLISHED,
+  dateModified: PUBLISHED,
+  mainEntityOfPage: PAGE_URL,
+  ...(OG_IMAGE ? { image: [OG_IMAGE] } : {}),
+  author: {
+    "@type": "Person",
+    name: "Yemi Fatodu",
+    url: SITE,
+    image: SITE + AUTHOR_PHOTO.src,
+    sameAs: [LINKEDIN_URL, GITHUB_URL, "https://x.com/yemi_fatodu"],
+    jobTitle: JOB_TITLE_SCHEMA,
+  },
+};
 
 function Figure({ img, priority }) {
   if (!img || !img.src) return null;
@@ -295,10 +249,24 @@ function Block({ item }) {
 }
 
 export default function FromRawDataToLiveProductPage() {
-  useSeo();
-
   return (
     <main className="bg-stone-50 text-stone-900" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+      <Helmet>
+        <title>{SEO_TITLE}</title>
+        <meta name="description" content={META_DESCRIPTION} />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:description" content={META_DESCRIPTION} />
+        <meta property="og:url" content={PAGE_URL} />
+        {OG_IMAGE && <meta property="og:image" content={OG_IMAGE} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={META_DESCRIPTION} />
+        {OG_IMAGE && <meta name="twitter:image" content={OG_IMAGE} />}
+        <script type="application/ld+json">{JSON.stringify(JSON_LD)}</script>
+      </Helmet>
+
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 lg:py-20">
         <header className="max-w-4xl">
           <img

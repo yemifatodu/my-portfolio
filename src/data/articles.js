@@ -1,5 +1,18 @@
 export const articlesData = [
   {
+    slug: "from-raw-data-to-live-product",
+    title: "From Raw Data to Live Product: How I Build End to End",
+    excerpt: "How I went from asking questions of spreadsheets to shipping models, pipelines and a full travel platform, and the habits that keep every number honest along the way.",
+    date: "2026-10-09",
+    readTime: "12 min read",
+    type: "insight",
+    tags: ["Data Science", "Full-Stack", "Machine Learning", "Business Intelligence"],
+    coverImage: null,
+    mediumUrl: null,
+    faq: [],
+    content: "<p>How I went from asking questions of spreadsheets to shipping models, pipelines and a full travel platform, and the habits that keep every number honest along the way.</p>",
+  },
+  {
     slug: "debugging-a-production-hotel-booking-platform",
     title: "Debugging a Production Hotel Booking Platform: From Broken Login to Live OAuth",
     excerpt: "A double-hashed password, a monorepo TypeScript build failure, four misconfigured environment variables spread across two hosting platforms, and a client secret typo. Here's how each one got traced and fixed to bring a full-stack booking app fully live.",
