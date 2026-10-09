@@ -8,6 +8,7 @@ import ArbitrageIQPage from "./pages/ArbitrageIQPage";
 import AdidasSalesPage from "./pages/AdidasSalesPage";
 import ArticlesPage from "./pages/ArticlesPage";
 import ArticlePage from "./pages/ArticlePage";
+import FromRawDataToLiveProductPage from "./pages/FromRawDataToLiveProductPage";
 import ScrollToTop from "./pages/ScrollToTop";
 import ResumeRedirect from "./pages/ResumeRedirect";
 import SkillsSection from "./pages/SkillsSection";
@@ -73,6 +74,7 @@ export default function PortfolioPreview() {
       <Route path="/projects/adidas-sales-performance" element={<AdidasSalesPage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
+      <Route path="/articles/from-raw-data-to-live-product" element={<FromRawDataToLiveProductPage />} />
       <Route path="/articles/:slug" element={<ArticlePage />} />
       <Route path="/resume" element={<ResumeRedirect />} />
       <Route path="*" element={<>
@@ -376,7 +378,7 @@ export default function PortfolioPreview() {
             </section>
 
             {/* ─── Articles & Research (teaser) ─── */}
-            <section id="articles" className="max-w-6xl mx-auto py-12 px-6">
+            <section id="articles" className="max-w-5xl mx-auto py-12 px-6">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold tracking-tight mb-3 font-heading">Articles & Research</h2>
                 <p className="text-slate-500 dark:text-slate-400 max-w-xl">
@@ -614,6 +616,7 @@ export default function PortfolioPreview() {
     </>
   );
 }
+
 
 
 
