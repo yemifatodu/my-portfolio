@@ -105,12 +105,4 @@ export const skillsData = [
       { name: "Gmail / Google Workspace", icon: "https://cdn.simpleicons.org/gmail", url: "https://workspace.google.com" },
     ]
   },
-  {
-    category: "AI Content & Media",
-    items: [
-      { name: "Canva", icon: "https://cdn.simpleicons.org/canva", url: "https://canva.com" },
-      { name: "CapCut", icon: "https://www.google.com/s2/favicons?domain=capcut.com&sz=64", url: "https://capcut.com" },
-      { name: "ElevenLabs", icon: "https://www.google.com/s2/favicons?domain=elevenlabs.io&sz=64", url: "https://elevenlabs.io" },
-    ]
-  },
 ];

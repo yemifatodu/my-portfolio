@@ -302,7 +302,7 @@ export default function PortfolioPreview() {
               <h2 className="text-3xl font-bold mb-6 tracking-tight font-heading">About Me</h2>
               <Card className="bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800/80 rounded-2xl overflow-hidden shadow-sm">
                 <CardContent className="p-6 md:p-8 text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
-                  <p>I am an AI Developer, Data Scientist, and Machine Learning Engineer passionate about building intelligent software that transforms complex data into practical business solutions. My work combines machine learning, business intelligence, data engineering, and modern web technologies to create applications that help organizations make faster, smarter, and more informed decisions.</p>
+                  <p>I am a Data Scientist, Full-Stack Developer, and Business Intelligence Specialist passionate about building intelligent software that transforms complex data into practical business solutions. My work combines machine learning, business intelligence, data engineering, and modern web technologies to create applications that help organizations make faster, smarter, and more informed decisions.</p>
 
                   <p>I specialize in designing end-to-end analytics solutions, from data collection and preprocessing to predictive modeling, interactive dashboards, REST APIs, and production-ready applications. Using technologies such as Python, SQL, Streamlit, FastAPI, and Tableau, I develop scalable platforms that automate workflows, uncover actionable insights, and solve real-world challenges across healthcare, finance, and emerging technologies.</p>
 
