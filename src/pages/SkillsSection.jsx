@@ -3,7 +3,7 @@ import { skillsData } from "../data/skills";
 import {
   Code, Brain, Layers, Server, Database, Cloud,
   BarChart3, Plane, CreditCard, Cpu, Palette, TrendingUp,
-  Rows3, List
+  Rows3, List, Tag
 } from "lucide-react";
 
 const categoryIcons = {
@@ -25,9 +25,11 @@ function LogoIcon({ item, size = "w-10 h-10", imgSize = "w-5 h-5" }) {
   return (
     <div className={`${size} rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:scale-110 group-hover:border-teal-400 transition-all duration-300 shrink-0`}>
       {item.icon ? (
-        <img src={item.icon} alt={item.name} className={`${imgSize} object-contain`} loading="lazy" />
+        <img src={item.icon} alt={item.name} className={`${imgSize} object-contain`} loading="lazy"/>
+      ) : item.name.length <= 4 ? (
+        <span className="text-[10px] font-bold text-slate-400 group-hover:text-teal-500 transition-colors">{item.name}</span>
       ) : (
-        <span className="text-[9px] font-bold text-slate-400">{item.name.slice(0, 2)}</span>
+        <Tag className={`${imgSize} text-slate-400 group-hover:text-teal-500 transition-colors`} />
       )}
     </div>
   );
@@ -37,7 +39,7 @@ function MiniLogoTile({ item }) {
   const content = (
     <div className="group flex flex-col items-center justify-center gap-1 shrink-0 w-16 mx-2">
       <LogoIcon item={item} />
-      <span className="text-[9px] text-slate-400 dark:text-slate-500 text-center leading-tight group-hover:text-teal-500 transition-colors truncate w-full">
+      <span className="text-[9px] text-slate-400 dark:text-slate-500 text-center leading-tight group-hover:text-teal-500 transition-colors line-clamp-2 break-words w-full">
         {item.name}
       </span>
     </div>
