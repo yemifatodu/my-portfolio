@@ -21,7 +21,7 @@ export default function ArticlePage() {
         <meta property="og:description" content={article.excerpt} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
-        {article.coverImage && <meta property="og:image" content={article.coverImage} />}
+        {article.coverImage && <meta property="og:image" content={article.coverImage.startsWith("/") ? "https://yemifatodu.online" + article.coverImage : article.coverImage} />}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

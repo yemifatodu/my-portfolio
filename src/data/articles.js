@@ -1,5 +1,109 @@
 export const articlesData = [
   {
+    slug: "arbitrageiq-streamlit-to-phone-app-plan",
+    title: "ArbitrageIQ Runs on Streamlit Today. Here's Why I'm Planning a Phone App",
+    excerpt: "ArbitrageIQ scans five exchanges, calculates profit after fees and sends Telegram alerts, all on Streamlit today. Here is where that setup starts to limit it, what a phone version could look like, and how to tell me whether you would use it.",
+    date: "2026-10-20",
+    readTime: "6 min read",
+    type: "insight",
+    tags: ["ArbitrageIQ", "Python", "Streamlit", "Product Roadmap", "Build in Public"],
+    coverImage: "/images/arbitrageiq-plan-cover.jpg",
+    mediumUrl: null,
+    faq: [
+      { q: "What is crypto arbitrage?", a: "Crypto arbitrage means taking advantage of a price difference for the same coin on two exchanges: buying where it is cheaper and selling where it is more expensive. The real profit is the price gap minus trading fees, withdrawal fees and any cost of moving funds between exchanges." },
+      { q: "Is crypto arbitrage risk-free?", a: "No. Prices can move while you act, transfers between exchanges take time, fees can erase a small gap, and exchanges can pause withdrawals. A displayed opportunity is information, not a guarantee of profit." },
+      { q: "Is ArbitrageIQ available as a mobile app?", a: "Not yet. ArbitrageIQ currently runs as a Python scanner with a Streamlit dashboard and Telegram alerts. A phone app is a plan, not a finished product, and there is no release date." },
+      { q: "Why consider moving ArbitrageIQ beyond Streamlit?", a: "Streamlit is excellent for dashboards, but it lives in a browser tab and is built around script reruns. A price gap is time-sensitive, so a product that runs in the background and notifies you on your phone may suit it better." }
+    ],
+    content: `
+      <p>ArbitrageIQ started life as a script that answered one question: is the same coin priced differently on two exchanges right now, and is the gap big enough to matter after fees?</p>
+
+      <p>It has grown since then, and it still lives on Streamlit. I have not turned it into a phone app yet. This article is about why I am considering that step, what it could look like, and what I would like to know from you before I build anything. It is a roadmap, so I will be clear about what works today and what is only a plan.</p>
+
+      <h2>What ArbitrageIQ does today</h2>
+
+      <p>The scanner is written in Python on asyncio and CCXT. It checks Binance, KuCoin, Bybit, OKX and Gate across 30 symbols, with up to 150 requests running concurrently, and repeats the scan every 10 minutes. Fetching that much market data one request at a time would be too slow to be useful, so concurrency was a requirement from the start.</p>
+
+      <p>A raw price gap is misleading, so the app calculates net profit after trading and withdrawal fees. I wrote a separate article about a fee-table bug I found along the way: <a href="/articles/crypto-arbitrage-scanner-trading-fees">Building a Crypto Arbitrage Scanner That Actually Accounts for Fees</a>. Results appear in a live Streamlit terminal with historical analytics stored in SQLite, and opportunities are sent to me as Telegram alerts. You can see the full project on the <a href="/projects/arbitrageiq">ArbitrageIQ project page</a>.</p>
+
+      <p>Along the way I added a selectable watchlist, so I can focus on the coins I care about, and I wired up Auto mode so it actually triggers scans by itself instead of waiting for a click. I also had to fix async event loop conflicts on Windows before the scanner would run reliably next to the dashboard.</p>
+
+      <h2>Where Streamlit starts to limit it</h2>
+
+      <p>Streamlit is the reason ArbitrageIQ exists at all. It took me from a script to a working interactive terminal quickly, and for a data project it is hard to beat.</p>
+
+      <p>But a price gap is perishable. People who would use a tool like this want to be told when something appears, not to remember to open a browser tab. Here is where I can see a Streamlit app stopping being the right shape:</p>
+
+      <ul>
+        <li><strong>It lives in a browser tab.</strong> Nobody installs a tab, and it never sits on a home screen.</li>
+        <li><strong>It is built around reruns.</strong> Streamlit reruns the script when you interact with it. That suits dashboards, but a scanner that must keep running is better as its own service, separate from whatever draws the screen.</li>
+        <li><strong>Alerts depend on Telegram.</strong> That works well for me, but it means every user has to connect through Telegram first.</li>
+        <li><strong>It cannot reach an app store.</strong> Distribution, push notifications and a real home-screen presence need a proper mobile app.</li>
+      </ul>
+
+      <p>The alert is the product. The dashboard is just where you check on it.</p>
+
+      <h2>What a phone version could look like</h2>
+
+      <p>Nothing here is built yet. This is the shape I have in mind, and I am keeping it simple on purpose:</p>
+
+      <ul>
+        <li><strong>A FastAPI backend</strong> that runs the scanner as a service and exposes the results through an API.</li>
+        <li><strong>A React Native app built with Expo</strong> that shows opportunities, the watchlist and history, and delivers notifications.</li>
+        <li><strong>The existing scanner logic</strong>, reused as it is, so the fee-aware calculations I have already built carry over.</li>
+      </ul>
+
+      <figure><img src="/images/arbitrageiq-plan-diagram.jpg" alt="ArbitrageIQ roadmap: scanner and Streamlit exist today; FastAPI backend, React Native and Expo app, and Google Play are planned" width="1600" height="640" style="width:100%;height:auto;border-radius:12px;" /><figcaption>The plan: solid is what exists today, dashed is not built yet.</figcaption></figure>
+
+      <p>The first target would be Google Play. I would want a first version to do a few things well instead of everything: show opportunities net of fees, let you choose a watchlist, and tell you when something appears.</p>
+
+      <h2>What I have learned that would carry over</h2>
+
+      <p>Building the scanner taught me lessons that would shape the app:</p>
+
+      <ul>
+        <li><strong>Fees decide everything.</strong> A gap that looks profitable before fees often is not after them. Any app should show net profit, never just the headline price difference.</li>
+        <li><strong>Async needs care.</strong> The event loop conflicts on Windows were a reminder that long-running background work and a user interface should not share a process casually. That is part of why the scanner would become a backend service.</li>
+        <li><strong>Control matters.</strong> The watchlist and Auto mode exist because I wanted to decide what gets scanned and when. Users would want the same.</li>
+      </ul>
+
+      <h2>How it might pay for itself</h2>
+
+      <p>I would rather be upfront about this now than surprise anyone later. The idea is a free version supported by ads, an optional paid tier for extras, and affiliate links to exchanges such as Binance and Luno, each clearly labelled as an affiliate link. None of this is final, and your feedback will shape it.</p>
+
+      <h2>What it does not do, and the risks</h2>
+
+      <p>Arbitrage sounds like free money, and it is not. Prices move while you act. Transfers between exchanges take time and cost fees, and a gap can close before your funds arrive. Exchanges can pause withdrawals. A number on a screen is information, not a guarantee.</p>
+
+      <p>ArbitrageIQ is a scanner and an alerting tool. Nothing in it is financial advice, and anyone using it should check live prices and fees on the exchanges themselves before moving money.</p>
+
+      <h2>Would you use it? Tell me</h2>
+
+      <p>I would rather validate this than build it blind. If you trade, or you simply like watching markets, these are the questions I care about most:</p>
+
+      <ul>
+        <li>Would you want arbitrage alerts on your phone, in Telegram, or both?</li>
+        <li>Which exchanges and coins should I add after the first five?</li>
+        <li>What would make you open an app like this every day?</li>
+      </ul>
+
+      <p><strong>Want to be first to know?</strong> <a href="mailto:info@yemifatodu.online?subject=ArbitrageIQ%20waitlist">Email me to join the waitlist</a>. If enough people want a phone version, that is the signal I need to start building, and you will hear from me first.</p>
+
+      <p>If you hire or lead a team, this project shows how I work, from a data pipeline to a product plan. You can <a href="https://calendly.com/yemifatodu/20-minutes-intro-call">book a 20-minute call</a> or read more of my work in the <a href="/articles">articles section</a>.</p>
+
+      <h2>The short version</h2>
+
+      <ul>
+        <li>ArbitrageIQ runs on Streamlit today: five exchanges, 30 symbols, profit after fees and Telegram alerts.</li>
+        <li>Streamlit got me to a working product fast, but a time-sensitive tool may belong on a phone.</li>
+        <li>The phone app is a plan, not a finished product: a FastAPI backend and a React Native app, starting on Google Play.</li>
+        <li>Arbitrage carries real risks, and any app should show net numbers, not hype.</li>
+        <li>The waitlist is open, and your answers decide whether and how I build it.</li>
+      </ul>
+    `,
+  },
+
+  {
     slug: "from-raw-data-to-live-product",
     title: "From Raw Data to Live Product: How I Build End to End",
     excerpt: "How I went from asking questions of spreadsheets to shipping models, pipelines and a full travel platform, and the habits that keep every number honest along the way.",
