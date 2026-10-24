@@ -48,8 +48,8 @@ export const arbitrageiqConfig = {
     tagline: "A production-grade crypto arbitrage terminal — scanning 5 exchanges, 30 symbols, delivering real-time opportunities with net-profit-after-fees calculations.",
     image: `${IMG}/hero-dashboard.png`,
     links: [
-      { label: "Live Demo", href: "https://yemifatodu-arbitrageiq.streamlit.app", primary: true },
-      { label: "GitHub", href: "https://github.com/yemifatodu/arbitrageiq" },
+      { label: "Live Demo", href: "https://yemifatodu-arbitrage-iq.streamlit.app", primary: true },
+      { label: "GitHub", href: "https://github.com/yemifatodu/arbitrage-iq" },
       { label: "Technical Report", href: `${IMG}/ArbitrageIQ_Technical_Report.pdf` },
       { label: "Presentation", href: `${IMG}/ArbitrageIQ_Presentation.pdf` },
     ],
@@ -184,8 +184,8 @@ export const arbitrageiqConfig = {
   ],
 
   resources: [
-    { icon: "ExternalLink", title: "Live Demo", desc: "Access the live arbitrage terminal — updated every 60 seconds.", href: "https://yemifatodu-arbitrageiq.streamlit.app" },
-    { icon: "Github", title: "GitHub Repository", desc: "Full source — scanner.py, app.py, and async architecture.", href: "https://github.com/yemifatodu/arbitrageiq" },
+    { icon: "ExternalLink", title: "Live Demo", desc: "Access the live arbitrage terminal — updated every 60 seconds.", href: "https://yemifatodu-arbitrage-iq.streamlit.app" },
+    { icon: "Github", title: "GitHub Repository", desc: "Full source — scanner.py, app.py, and async architecture.", href: "https://github.com/yemifatodu/arbitrage-iq" },
     { icon: "FileText", title: "Technical Report (PDF)", desc: "Complete system architecture, fee calculations, and performance analysis.", href: `${IMG}/ArbitrageIQ_Technical_Report.pdf` },
     { icon: "Presentation", title: "Presentation", desc: "Stakeholder overview of the trading system and business value.", href: `${IMG}/ArbitrageIQ_Presentation.pdf` },
   ],

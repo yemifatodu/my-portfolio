@@ -50,7 +50,7 @@ export const projectData = [
     role: "Lead Data Engineer & Full-Stack Developer",
     tech: ["Python", "Asyncio", "CCXT", "Streamlit", "SQLite", "Telegram API"],
     featured: true,
-    blog: "https://yemifatodu-arbitrageiq.streamlit.app",
+    blog: "https://yemifatodu-arbitrage-iq.streamlit.app",
     dashboard: "https://yemifatodu-arbitrage-iq.streamlit.app/",
     repo: "https://github.com/yemifatodu/arbitrage-iq"
   },
